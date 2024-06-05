@@ -13,7 +13,17 @@ So runtime environment is responsible for memory management, I/O operations and 
 ## 3. What is nodejs ?
 Nodejs is a runtime enviornment to execute the javascript code on the server side.
 
-## 4. What is V8?
+## 4. What is V8 ?
 V8 is a javascript engine, chorme has the V8, Edge has chakra, firefox has spider monkey
+
+## 5. what are the key features of node js ?
+- **Asynchronous & Non-Blocking**
+- **Single threaded**
+- **Event driven**
+- **V8 Javascript engine**
+- **Cross platform**
+- **NPM(Node Package Manager)**
+- **Real time capabilities**
+ 
 
 
