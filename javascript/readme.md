@@ -22,3 +22,6 @@ After memory allocation done then, line by line code is executed then in the fir
  - Global execution context: It is created when js code starts running, it represents the global scope and global object(e.g window in browser). The 'this' keyword mainly refers to the global object.
  - Functional Execution context: It is created whenver a function is called or invoked. Each function call generates new execution context. The 'this' keyword within a function context refers to the object which is invoked in that function.
  - Eval execution context: Created when the 'eval' function is used to execute a string of code. This execution context generally avoided due to the security and performance issues.
+
+ ## 4. What is the shortest js program ?
+ A empty javascript file is the shortest js program.
