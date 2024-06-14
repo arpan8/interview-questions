@@ -16,7 +16,7 @@ Nodejs is a runtime enviornment to execute the javascript code on the server sid
 ## 4. What is V8 ?
 V8 is a javascript engine, chorme has the V8, Edge has chakra, firefox has spider monkey
 
-## 5. what are the key features of node js ?
+## 5. What are the key features of node js ?
 - **Asynchronous & Non-Blocking**
 - **Single threaded**
 - **Event driven**
@@ -24,6 +24,15 @@ V8 is a javascript engine, chorme has the V8, Edge has chakra, firefox has spide
 - **Cross platform**
 - **NPM(Node Package Manager)**
 - **Real time capabilities**
- 
+
+## 6. What is Single Threaded Programming ?
+A single-threaded program contains only one main thread of execution. It processes tasks sequentially, one after the other. Single-threaded programs are straightforward and easy to reason about, making them suitable for simple applications with limited concurrency requirements.
+
+## 7. What is Synchronous programing ?
+Synchronous programming is a programming model where operations take place sequentially.i.e. each task is performed one after another, and waits for previous task to complete before going to the next task.
+
+## 8. What is Asynchronous programming ?
+
+
 
 
