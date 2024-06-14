@@ -5,6 +5,16 @@ Javascript is a high level, interpreted (execute line by line) programming langu
 
 ## 2. What is execution context in javascript ?
 Execution context is a environment where the javascript code is executed. It has two sections: memory component (known as variable environment) and code component (threads of execution)
+
+```javascript
+var a; // declaring a
+console.log(a); // output: undefined
+a=10
+console.log(a)
+```
+So when this code runs, then Global execution context is created and in the memory components first the variable 'a' is allocated with a memory and value is set to 'undefined'. 
+
+After memory allocation done then, line by line code is executed then in the first log 'undefined' will show as it has no other value, then in next line 'a=10', so the log will print as 10
 ![diagram-export-14-06-2024-16_53_13](https://github.com/arpan8/interview-questions/assets/41347230/a382f985-d991-46b9-9b46-e0ebc727cf16)
 
 
