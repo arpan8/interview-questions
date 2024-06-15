@@ -107,3 +107,5 @@ Here in this code, we can easily understand the hoisting
 - **In the code execution phase this x variable is not initialized, but in the memory allocation phase we can see x variable has some memory with undefined stored in it. So var is in the global scope, if the variable is declared then the var can be called from anywhere. In this case, the var variable is called before its initialization, so undefined returns.**
 - In the case of a function, the whole code is stored during memory allocation time, when the function is called then a new execution context is created, and it has its own memory and code phase. After the function ends its execution, the execution context is also deleted and returns to the global execution context.
 - In the last line of code again console.log(x) is written and this time it returns 10 because the variable is already initialized with a new value.
+
+![alt text](public/images/hoisting.png)
