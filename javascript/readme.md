@@ -87,7 +87,7 @@ When a javascript program starts execution, then a stack is also populated with 
 
 ![diagram-export-15-06-2024-13_42_21](https://github.com/arpan8/interview-questions/assets/41347230/224a498a-b79a-43d9-bacc-86d83eb6f48b)
 
-## 7.What is hoisting in javascript?
+## 7. What is hoisting in JavaScript?
 Hoisting is a phenomenon/situation in javascript where a varible or function can be accessed before its initialization.
 
 e.g 
@@ -100,10 +100,10 @@ function get(){
 }
 console.log(x)
 ```
-Here in this code we can easily understand the hoisting
+Here in this code, we can easily understand the hoisting
 
 - In the memory allocation phase **x is defined as undefined** and the **get() whole code is stored**
-- In code execution phase console.log(x) is there, here x is already has a special value undefined so the undefined prints.
-- **In code execution phase this x variable is not initialized, but in the memory allocation phase we can see x variable got some memory with undefined stored in it. So var is in the global scope, if the variable is declared then the var can be called from anywhere. In this case the var variable is called before its initailization, so undefined returns.**
-- In case of function, the whole code is stored during memory allocation time, when the function is called then a new execution context is created, and it has it's own memoery and code phase. After the function ends it's execution, execution context is also deleted and returns to the global execution context.
-- In the last line of code again console.log(x) is written and this time it returns 10 because the variable is already initalize with a new value.
+- In the code execution phase console.log(x) is there, here x already has a special value undefined so the undefined prints.
+- **In the code execution phase this x variable is not initialized, but in the memory allocation phase we can see x variable has some memory with undefined stored in it. So var is in the global scope, if the variable is declared then the var can be called from anywhere. In this case, the var variable is called before its initialization, so undefined returns.**
+- In the case of a function, the whole code is stored during memory allocation time, when the function is called then a new execution context is created, and it has its own memory and code phase. After the function ends its execution, the execution context is also deleted and returns to the global execution context.
+- In the last line of code again console.log(x) is written and this time it returns 10 because the variable is already initialized with a new value.
