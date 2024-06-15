@@ -72,3 +72,6 @@ In that particular execution context again 2 phases will come memory phase and c
 *Atlast when all the code is executed, then global execution is automatically deleted*
 
 ![diagram-export-15-06-2024-13_05_28](https://github.com/arpan8/interview-questions/assets/41347230/8f00891b-adfa-4182-b29b-54cd40850548)
+
+## 6. What is call stack ?
+When a javascript program starts execution, then a stack also populated with the global execution context, and the global execution context is stored in that stack, also when a function is invoked, then a new execution context is generated and it is placed in the stack. after function returns its value the execution context will be removed autometically, by **popping** from the stack. When the whole js program execution is completed then global execution context is also removed from the stack by pop.
