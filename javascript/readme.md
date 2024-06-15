@@ -113,3 +113,15 @@ Here in this code, we can easily understand the hoisting
 ## 8. What is the difference between undefined and not defined?
 - When a variable is mentioned in the js code and during memory allocation phase the variable got a special type of placeholder/keyword called **undefined** and before initialize the variable if it needs to print then **undefined** will print.
 - When a variable is called in the js code, and that variable is never mentioned in the js code, so the memory allocation did not happen, then we can say that variable is **not defined**. Also js sends a error message that particular variable is **not defined**
+
+## 9. Is JS a loosely type / weakly typed language?
+Javascript is a loosely type language, because when a variable has some value, then that variable does not attaches any data type with it.
+e.g
+```javascript
+var a = 10, b ='11'
+var a = a + b
+console.log(a) //1011
+```
+So from the example we can see that a has integer value 10, b has string value 11, when the variables concats, then the result makes it string and its stored in the variable a. Now the variable has string type value.
+
+So this variable does not attach any data type with it, this makes the variable flexible to hold different data types of value.
