@@ -25,3 +25,27 @@ After memory allocation done then, line by line code is executed then in the fir
 
  ## 4. What is the shortest js program ?
  A empty javascript file is the shortest js program.
+
+ ## 5. Code example of how execution context works.
+```javascript
+var n=2
+function square(num){
+    var ans = num *num
+    return ans
+}
+var sq1 = square(n)
+var sq2 = square(4)
+```
+The execution context is created with 2 phases, Memory creation phase and code execution phase.
+So when this example code starts running, 1st phase, the memory createion phase started, so in the code ---
+
+**n: undefined** // undefined is a speical keyword to show that the variable is not empty, but having a speical default value.
+
+Next comes the function
+
+**square: function square(num){
+    var ans = num *num
+    return ans
+}**
+
+For function whole code is stored in the memory
