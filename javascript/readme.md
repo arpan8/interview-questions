@@ -39,23 +39,24 @@ var sq2 = square(4)
 The execution context is created with 2 phases, **Memory creation phase and code execution phase**.
 So when this example code starts running, 1st phase, the **memory createion phase** started, so in the code ---
 
-**n: undefined** // undefined is a speical keyword to show that the variable is not empty, but having a speical default value.
+- **n: undefined** // undefined is a speical keyword to show that the variable is not empty, but having a speical default value.
 
 Next comes the function
 
-__square: {...}__ // function square(num){
+- __square: {...}__ // function square(num){
     var ans = num *num
     return ans
 }
 
 For function whole code is stored in the memory
 
-**sq1: undefined**
-**sq1: square(n)** // when the function is invoked
-**sq1: 4** // after getting the result from the function and functional execution context is removed autometically
-**sq2: undefined**
-**sq2: square(4)**  // when the function is invoked
-**sq2: 16** // after getting the result from the function and functional execution context is removed autometically
+- **sq1: undefined**
+- **sq1: square(n)** // when the function is invoked
+- **sq1: 4** // after getting the result from the function and functional execution context is removed autometically
+
+- **sq2: undefined**
+- **sq2: square(4)**  // when the function is invoked
+- **sq2: 16** // after getting the result from the function and functional execution context is removed autometically
 
 Now the **code execution phase** starts
 
