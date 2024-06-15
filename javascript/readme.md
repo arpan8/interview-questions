@@ -109,3 +109,7 @@ Here in this code, we can easily understand the hoisting
 - In the last line of code again console.log(x) is written and this time it returns 10 because the variable is already initialized with a new value.
 
 ![alt text](public/images/hoisting.png)
+
+## 8. What is the difference between undefined and not defined?
+- When a variable is mentioned in the js code and during memory allocation phase the variable got a special type of placeholder/keyword called **undefined** and before initialize the variable if it needs to print then **undefined** will print.
+- When a variable is called in the js code, and that variable is never mentioned in the js code, so the memory allocation did not happen, then we can say that variable is **not defined**. Also js sends a error message that particular variable is **not defined**
