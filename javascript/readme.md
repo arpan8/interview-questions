@@ -30,14 +30,14 @@ After memory allocation done then, line by line code is executed then in the fir
 ```javascript
 var n=2
 function square(num){
-    var ans = num *num
+    var ans = num * num
     return ans
 }
 var sq1 = square(n)
 var sq2 = square(4)
 ```
-The execution context is created with 2 phases, Memory creation phase and code execution phase.
-So when this example code starts running, 1st phase, the memory createion phase started, so in the code ---
+The execution context is created with 2 phases, **Memory creation phase and code execution phase**.
+So when this example code starts running, 1st phase, the **memory createion phase** started, so in the code ---
 
 **n: undefined** // undefined is a speical keyword to show that the variable is not empty, but having a speical default value.
 
@@ -49,3 +49,23 @@ __square: {...}__ // function square(num){
 }
 
 For function whole code is stored in the memory
+
+**sq1: undefined**
+**sq1: square(n)** // when the function is invoked
+**sq1: 4** // after getting the result from the function and functional execution context is removed autometically
+**sq2: undefined**
+**sq2: square(4)**  // when the function is invoked
+**sq2: 16** // after getting the result from the function and functional execution context is removed autometically
+
+Now the **code execution phase** starts
+
+**var n =2** // now the undefined value will replace by the value of n .i.e 2
+Then comes the function definitation, nothing to do here, so gone to next line
+
+**now the function invocation or call happens in the line sq1 = square(n), so for function invocation a new mini program starts and a new execution context is created under the global execution context is created**
+
+In that particular execution context again 2 phases will come memory phase and code execution phase and in the result the **ans variable** returns the value and then the execution context is deleted
+
+**For next function invaocation same thing will happen .i.e creation of new execution context and after return the result execution context will be deleted**
+
+*Atlast when all the code is executed, then global execution is autometically deleted*
