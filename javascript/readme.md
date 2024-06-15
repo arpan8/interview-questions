@@ -134,11 +134,13 @@ Also when one variable has the specific area where the variable can be accessed 
 ## 11. What is lexical environment ?
 Lexical means in order or in hirerchy or in a sequence.
 When a execution context is created a lexical environmemet is also created. Lexical enviornment is the local memory space along with the lexical environment of its parent.
+
 ![alt text](public/images/lexical-env.png)
 
 ## 12. What is scope chain ?
 When a variable is searched in a function's local scope, if not found then the variable is searched in its outer/parent function, if not found then it is searched in the global scope. So when a search is going on scope after scope, and everytime its searches to its outer scope this is called scope chaining.
-![alt text](public/images/scope-chain.png)
+
+![alt text](public/images/scope-chaining.png)
 
 
 
