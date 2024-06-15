@@ -43,9 +43,9 @@ So when this example code starts running, 1st phase, the memory createion phase 
 
 Next comes the function
 
-**square: function square(num){
+__square: {...}__ // function square(num){
     var ans = num *num
     return ans
-}**
+}
 
 For function whole code is stored in the memory
