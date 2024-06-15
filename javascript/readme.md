@@ -142,6 +142,12 @@ When a variable is searched in a function's local scope, if not found then the v
 
 ![alt text](public/images/scope-chaining.png)
 
+## 13. Difference between var, let, const.
+
+   | var                                          | let                                             |  const                                          |
+   | -------------------------------------------- | ----------------------------------------------- |------------------------------------------------ |
+   | It is global scope                           | It is in block scope                            | It is in block scope                            |
+
 
 
 
