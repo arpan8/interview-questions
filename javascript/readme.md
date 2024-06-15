@@ -125,3 +125,21 @@ console.log(a) //1011
 So from the example we can see that a has integer value 10, b has string value 11, when the variables concats, then the result makes it string and its stored in the variable a. Now the variable has string type value.
 
 So this variable does not attach any data type with it, this makes the variable flexible to hold different data types of value.
+
+## 10. What is Scope?
+Scope means where I can access a specific variable or a function in the code. 
+
+Also when one variable has the specific area where the variable can be accessed that is called scope of the variable.
+
+## 11. What is lexical environment ?
+Lexical means in order or in hirerchy or in a sequence.
+When a execution context is created a lexical environmemet is also created. Lexical enviornment is the local memory space along with the lexical environment of its parent.
+![alt text](public/images/lexical-env.png)
+
+## 12. What is scope chain ?
+When a variable is searched in a function's local scope, if not found then the variable is searched in its outer/parent function, if not found then it is searched in the global scope. So when a search is going on scope after scope, and everytime its searches to its outer scope this is called scope chaining.
+![alt text](public/images/scope-chain.png)
+
+
+
+
