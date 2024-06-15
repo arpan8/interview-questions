@@ -148,8 +148,9 @@ When a variable is searched in a function's local scope, if not found then the v
    | -------------------------------------------- | ----------------------------------------------- |------------------------------------------------ |
    | It is global scope                           | It is in block scope                            | It is in block scope                            |
    | Temporal dead zone does not occur            | Temporal dead zone does occur                   | Temporal dead zone does occur                   |
+   |                                              |                                                 |                                                 |
    | Before initialization variable can be        | Before initialization variable can not be       | Before initialization variable can not be       |
-   | accessed with the value **undefined**        | a **reference error will show that particular   | a reference error will show that particular     |
+   | accessed with the value **undefined**          a reference error will show that particular       a reference error will show that particular     |
    |                                              | variable can not be accessed before             | variable can not be accessed before             |
    |                                              | initialization                                  | initialization                                  |
 
