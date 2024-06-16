@@ -273,7 +273,7 @@ console.log(makeAdder(10)(2)); // 12
 - setTimeouts
 - Iterators
 
-## 20. what will the output?
+## 20. What will the output?
 
 ```javascript
 for(var i=1; i<=5; i++){
@@ -308,3 +308,78 @@ function x () {
 }
 x()
 ```
+
+## 23. What is function statement in JS?
+The way of creating a function, is called function statement. It is also known as **function declaration**.
+
+```javascript
+function a(){
+    ....
+}
+```
+## 24. What is function expression in JS?
+When a function is stored in a variable that is called function expression.
+
+```javascript
+var a = function(){
+    ....
+}
+```
+
+## 25. What is the difference between function statement and function expression in JS?
+The main diiference is **hoisting**.
+
+In the memory allocation time
+
+- Function statement got its meomry and whole function statement is stored in the memory, so from anywhere you are calling the function the output will come.
+- For function expression in memory allocation time the function expession is treated as normal variable, with the value undefined, so before initialization of the variable if I call the variable as a function, it will show error.
+
+## 26 . What is Anonymous Function?
+A function without name is called Anonymous Function.
+
+```javascript
+	var greet = function () { 
+		console.log('Arpan'); 
+	}
+	
+	greet()
+```
+In this example, we define an anonymous function that prints a message to the console. The function is then stored in the greet variable. We can call the function by invoking greet()
+
+```javascript
+setTimeout(function () { 
+        console.log('Arpan'); 
+    }, 2000); 
+```
+In this example, we pass an anonymous function as a callback function to the setTimeout() method. This executes this anonymous function 2000ms later.
+
+## 27. Differnce between function parameter and arguments?
+- In the function expression or in funtion declaration local variables can be added to get the values which is required by the function that is known as function parameter.
+```javascript
+function get(param1, parma2){ // function parameters 
+    ...
+}
+```
+- When invoking or calling a function we need to send some values which will accept by function parameter, that is known as function argument.
+```javascript
+get(1, 2) // function arguments
+```
+
+## 28. What is first class function?
+A function when it is used as value of variable, can be passed as an argument to another function, can be returned from a function, then that function is called first class function.
+
+```javascript
+let assign = function sum(x, y) {  
+    return x + y;  
+}   // function is taken as value of a variable
+  
+let avg = function avg(x,y, z) {  
+    return z(x, y) / 2;  // return a function
+}  // function is taken as value of a variable
+let res = avg(10, 20, assign);  // function is passed as an argument
+console.log(res)
+```
+The first class functions are the first class citizens and are treated as the first-class object.
+
+## 29. What is higher order function ?
+A higher-order function is a function that takes one or more functions as arguments, or returns a function as its result.
