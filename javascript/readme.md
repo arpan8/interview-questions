@@ -194,3 +194,35 @@ let a = 10 // let variable is initialized
 so from the example we can see the time between hoisted and initialization is known as **Temporal dead zone**
 ![alt text](public/images/tdz.png)
 
+## 16. What is block in javascript ?
+A block is defined by curly braces, there zero to n numbers of statment can be written. It is also known as compound statement.
+e.g
+```javascript
+{
+    // this is block
+}
+
+if(true){
+    // this is a block
+}
+for(;;){
+    // this is a block
+}
+```
+When js expects only one statement, but we have many statements, so we need to group all those statements in 1 group or compound statement, like for if-else, loops it expects only one statement, but we have many statements, so we group all those statements in a block.
+
+## 17. What is shadowing in js?
+when a variable declared within a certain scope (decision block, method, or inner class) has the same name as a variable declared in an outer scope.
+e.g
+```javascript
+    var a = 10
+    let b = 20
+    {
+        var a = 20
+        let b = 100
+        console.log(a) // 20
+        console.log(b) // 100
+    }
+    console.log(a) // 20 var is in global scope so the variable can be accessed from anywhere and can update its value
+    console.log(b) // 20 let is in block scope so outside the scope the same name variable has different memory allocation and scope 
+```
