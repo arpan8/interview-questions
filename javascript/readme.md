@@ -226,3 +226,85 @@ e.g
     console.log(a) // 20 var is in the global scope so the variable can be accessed from anywhere and can update its value
     console.log(b) // 20 let is in the block scope so outside the scope the same name variable has different memory allocation and scope 
 ```
+
+## 18. What is closure ?
+- Closure means that a function bind together its lexical environment.
+- In other words, a function along with its lexical scope bundled together called closure.
+- In other words, a closure gives you access to an outer function's scope from an inner function
+
+In JavaScript, closures are created every time a function is created
+
+e.g
+```javascript
+function makeFunc() {
+    const name = "Mozilla";
+    function displayName() {
+      console.log(name);
+    }
+    return displayName;
+}
+  
+const myFunc = makeFunc(); //not only the inner function return also the outer scope return i.e closure return, that's why outer scope variable can be accessed
+myFunc(); // Mozilla
+makeFunc()() // Mozilla
+
+
+function makeAdder(x) {
+    return function (y) {
+      return x + y;
+    };
+}
+
+const add5 = makeAdder(5); //not only the inner function return also the outer scope return i.e closure return, that's why outer scope variable can be accessed
+const add10 = makeAdder(10); //not only the inner function return also the outer scope return i.e closure return, that's why outer scope variable can be accessed
+
+console.log(add5(2)); // 7
+console.log(add10(2)); // 12
+  
+console.log(makeAdder(5)(2)); // 7
+console.log(makeAdder(10)(2)); // 12
+```
+## 19. Uses of Closures?
+- Module Design Pattern
+- Currying
+- Function like once
+- memoize
+- maintaining state in *async* world
+- setTimeouts
+- Iterators
+
+## 20. what will the output?
+
+```javascript
+for(var i=1; i<=5; i++){
+    setTimeout(()=>{
+        console.log(i) // 6 6 6 6 6
+    }, i*1000)
+}
+```
+
+## 21. What will be the output?
+
+```javascript
+for(let i=1; i<=5; i++){
+    setTimeout(()=>{
+        console.log(i) // 1 2 3 4 5
+    }, i*1000)
+}
+```
+
+## 22. What will be the output?
+
+```javascript
+function x () {
+    for(var i=1; i<=5; i++){
+        function y(i){
+            setTimeout(()=>{
+                console.log(i) // 1 2 3 4 5
+            }, i * 1000)
+        }
+        y(i)
+    }
+}
+x()
+```
