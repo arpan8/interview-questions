@@ -383,3 +383,15 @@ The first class functions are the first class citizens and are treated as the fi
 
 ## 29. What is higher order function ?
 A higher-order function is a function that takes one or more functions as arguments, or returns a function as its result.
+
+```javascript
+let assign = function sum(x, y) {  
+    return x + y;  
+} 
+  
+let avg = function avg(x,y, z) {  
+    return z(x, y) / 2; 
+}
+let res = avg(10, 20, assign);  // here avg function is higher order function because it takes assign function as an argument also returning it
+console.log(res)
+```
