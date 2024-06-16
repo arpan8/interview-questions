@@ -14,7 +14,7 @@ console.log(a)
 ```
 So when this code runs, then the Global execution context is created and in the memory components first the variable 'a' is allocated with a memory, and the value is set to 'undefined'. 
 
-After memory allocation is done, then line-by-line code is executed in the first log 'undefined' will show as it has no other value, then in next line 'a=10', so the log will print as 10
+After memory allocation is done, line-by-line code is executed in the first log 'undefined' will show as it has no other value, then in next line 'a=10', so the log will print as 10
 ![diagram-export-14-06-2024-16_53_13](https://github.com/arpan8/interview-questions/assets/41347230/a382f985-d991-46b9-9b46-e0ebc727cf16)
 
 
@@ -88,7 +88,7 @@ When a javascript program starts execution, then a stack is also populated with 
 ![diagram-export-15-06-2024-13_42_21](https://github.com/arpan8/interview-questions/assets/41347230/224a498a-b79a-43d9-bacc-86d83eb6f48b)
 
 ## 7. What is hoisting in JavaScript?
-Hoisting is a phenomenon/situation in javascript where a varible or function can be accessed before its initialization.
+Hoisting is a phenomenon/situation in javascript where a variable or function can be accessed before its initialization.
 
 e.g 
 ```javascript
@@ -111,34 +111,34 @@ Here in this code, we can easily understand the hoisting
 ![alt text](public/images/hoisting.png)
 
 ## 8. What is the difference between undefined and not defined?
-- When a variable is mentioned in the js code and during memory allocation phase the variable got a special type of placeholder/keyword called **undefined** and before initialize the variable if it needs to print then **undefined** will print.
-- When a variable is called in the js code, and that variable is never mentioned in the js code, so the memory allocation did not happen, then we can say that variable is **not defined**. Also js sends a error message that particular variable is **not defined**
+- When a variable is mentioned in the js code and during the memory allocation phase the variable gets a special type of placeholder/keyword called **undefined**. Before initializing the variable if it needs to print then **undefined** will print.
+- When a variable is called in the js code, and that variable is never mentioned in the js code, so the memory allocation did not happen, then we can say that variable is **not defined**. Also, js sends an error message that a particular variable is **not defined**
 
 ## 9. Is JS a loosely type / weakly typed language?
-Javascript is a loosely type language, because when a variable has some value, then that variable does not attaches any data type with it.
+Javascript is a loosely typed language because when a variable has some value, that variable does not attach any data type with it.
 e.g
 ```javascript
 var a = 10, b ='11'
 var a = a + b
 console.log(a) //1011
 ```
-So from the example we can see that a has integer value 10, b has string value 11, when the variables concats, then the result makes it string and its stored in the variable a. Now the variable has string type value.
+So from the example, we can see that a has an integer value of 10, and b has a string value of 11, when the variables concats, then the result makes it a string and it's stored in the variable a. Now the variable has a string type value.
 
 So this variable does not attach any data type with it, this makes the variable flexible to hold different data types of value.
 
 ## 10. What is Scope?
 Scope means where I can access a specific variable or a function in the code. 
 
-Also when one variable has the specific area where the variable can be accessed that is called scope of the variable.
+Also when one variable has a specific area where the variable can be accessed that is called the scope of the variable.
 
-## 11. What is lexical environment ?
-Lexical means in order or in hirerchy or in a sequence.
-When a execution context is created a lexical environmemet is also created. Lexical enviornment is the local memory space along with the lexical environment of its parent.
+## 11. What is lexical environment?
+Lexical means in order or in hierarchy or in a sequence.
+When an execution context is created a lexical environment is also created. The lexical environment is the local memory space along with the lexical environment of its parent.
 
 ![alt text](public/images/lexical-env.png)
 
-## 12. What is scope chain ?
-When a variable is searched in a function's local scope, if not found then the variable is searched in its outer/parent function, if not found then it is searched in the global scope. So when a search is going on scope after scope, and everytime its searches to its outer scope this is called scope chaining.
+## 12. What is the scope chain?
+When a variable is searched in a function's local scope, if not found then the variable is searched in its outer/parent function, if not found then it is searched in the global scope. So when a search is going on scope after scope, and every time its searches to its outer scope this is called scope chaining.
 
 ![alt text](public/images/scope-chaining.png)
 
@@ -146,19 +146,19 @@ When a variable is searched in a function's local scope, if not found then the v
 
     var                                          | let                                               |  const                                          
     -------------------------------------------- | ------------------------------------------------- |------------------------------------------------ 
-    1.It is global scope                         | 1.It is in block scope                            | 1.It is in block scope                            
-    2.Temporal dead zone does not occur          | 2.Temporal dead zone does occur                   | 2.Temporal dead zone does occur                   
-    3.Before initialization variable can be      | 3.Before initialization variable can not be       | 3.Before initialization variable can not be       
+    1. It is global scope                        | 1. It is in block scope                           | 1. It is in block scope                            
+    2. Temporal dead zone does not occur         | 2. Temporal dead zone does occur                  | 2. Temporal dead zone does occur                   
+    3. Before initialization variable can be     | 3.Before initialization variable can not be       | 3.Before initialization variable can not be       
       accessed with the value **undefined**      |   a reference error will show that particular     |   a reference error will show that particular     
                                                  |   variable can not be accessed before             |   variable can not be accessed before             
                                                  |   initialization                                  |   initialization                                  
-    4. Reassign value is possible                | 4.Reassign value is possible                      | 4.Reassign value is not possible
+    4. Reassign value is possible                | 4. Reassign value is possible                     | 4. Reassign value is not possible
 
 ## 14. What is the difference between == and === operators
 
-JavaScript provides both strict(===, !==) and type-converting(==, !=) equality comparison. The strict operators take type of variable in consideration, while non-strict operators make type correction/conversion based upon values of variables. The strict operators follow the below conditions for different types,
+JavaScript provides both strict(===, !==) and type-converting(==, !=) equality comparison. The strict operators take the type of variable into consideration, while non-strict operators make type correction/conversion based upon the values of variables. The strict operators follow the below conditions for different types,
 
-1. Two strings are strictly equal when they have the same sequence of characters, same length, and same characters in corresponding positions.
+1. Two strings are strictly equal when they have the same sequence of characters, the same length, and the same characters in corresponding positions.
 2. Two numbers are strictly equal when they are numerically equal, i.e., having the same number value.
     There are two special cases in this,
     1. NaN is not equal to anything, including NaN.
@@ -184,34 +184,34 @@ NaN == NaN or NaN === NaN // false
 {}=={} or {}==={} //false, refer different objects in memory
 ```
 
-## 15. What is temporal dead zone ?
-let and const variable are in block scope, let and const are also hoisted because in the memory allocation time this variable also got the memory allocation with undefined stored in the variable, so if a let or const variable is accessed before its initalization, it will show an error that the variable can not accessed before its initialization, so **the time between hoisted and initalization of the let or const variable is known as temporal dead zone**.
+## 15. What is a temporal dead zone?
+let and const variable are in a block scope, let and const are also hoisted because in the memory allocation time, this variable also got the memory allocation with undefined stored in the variable, so if a let or const variable is accessed before its initialization, it will show an error that the variable can not access before its initialization, so **the time between hoisted and initialization of the let or const variable is known as temporal dead zone**.
 e.g
 ```javascript
-console.log(a) //here error will come with a meesage that 'a' can not accessed before its initilization, so this means let variable is hoisted,variable can not be accessed
+console.log(a) //here error will come with a message that 'a' can not accessed before its initialization, so this means let variable is hoisted, variable can not be accessed
 let a = 10 // let variable is initialized
 ```
-so from the example we can see the time between hoisted and initialization is known as **Temporal dead zone**
+so from the example, we can see the time between hoisted and initialization is known as the **Temporal dead zone**
 ![alt text](public/images/tdz.png)
 
-## 16. What is block in javascript ?
-A block is defined by curly braces, there zero to n numbers of statment can be written. It is also known as compound statement.
+## 16. What is block in javascript?
+A block is defined by curly braces, there zero to n numbers of statements can be written. It is also known as a compound statement.
 e.g
 ```javascript
 {
-    // this is block
+    //This is block
 }
 
 if(true){
-    // this is a block
+    //This is a block
 }
 for(;;){
-    // this is a block
+    //This is a block
 }
 ```
-When js expects only one statement, but we have many statements, so we need to group all those statements in 1 group or compound statement, like for if-else, loops it expects only one statement, but we have many statements, so we group all those statements in a block.
+When js expects only one statement, but we have many statements, so we need to group all those statements in 1 group or compound statement, for if-else, loops it expects only one statement, but we have many statements, so we group all those statements in a block.
 
-## 17. What is shadowing in js?
+## 17. What is shadowing in JS?
 when a variable declared within a certain scope (decision block, method, or inner class) has the same name as a variable declared in an outer scope.
 e.g
 ```javascript
@@ -223,6 +223,6 @@ e.g
         console.log(a) // 20
         console.log(b) // 100
     }
-    console.log(a) // 20 var is in global scope so the variable can be accessed from anywhere and can update its value
-    console.log(b) // 20 let is in block scope so outside the scope the same name variable has different memory allocation and scope 
+    console.log(a) // 20 var is in the global scope so the variable can be accessed from anywhere and can update its value
+    console.log(b) // 20 let is in the block scope so outside the scope the same name variable has different memory allocation and scope 
 ```
