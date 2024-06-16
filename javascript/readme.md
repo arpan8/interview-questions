@@ -184,4 +184,13 @@ NaN == NaN or NaN === NaN // false
 {}=={} or {}==={} //false, refer different objects in memory
 ```
 
+## 15. What is temporal dead zone ?
+let and const variable are in block scope, let and const are also hoisted because in the memory allocation time this variable also got the memory allocation with undefined stored in the variable, so if a let or const variable is accessed before its initalization, it will show an error that the variable can not accessed before its initialization, so **the time between hoisted and initalization of the let or const variable is known as temporal dead zone**.
+e.g
+```javascript
+console.log(a) //here error will come with a meesage that 'a' can not accessed before its initilization, so this means let variable is hoisted,variable can not be accessed
+let a = 10 // let variable is initialized
+```
+so from the example we can see the time between hoisted and initialization is known as **Temporal dead zone**
+![alt text](public/images/tdz.png)
 
