@@ -398,3 +398,21 @@ console.log(res)
 
 ## 30. What is callback function?
 A function which can be taken as argument to another function that is called call back function.
+```javascript
+
+setTimeout(()=> {
+    console.log('timer')
+}, 2000)
+
+function x(yz){
+    console.log('x')
+    yz()
+}
+
+x(function yz(){
+    console.log('y')
+})
+```
+Here the x, y, after 5 sec timer will get printed.
+
+Here yz is the call back function. 
