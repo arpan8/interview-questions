@@ -415,4 +415,4 @@ x(function yz(){
 ```
 Here the x, y, after 5 sec timer will get printed.
 
-Here yz is the call back function. 
+Here yz is the call back function, and under setTimeout parameter another call back function is there. 
