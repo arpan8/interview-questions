@@ -462,3 +462,46 @@ x(function yz(){
 Here the x, y, after 5 sec timer will get printed.
 
 Here yz is the call back function, and under setTimeout parameter another call back function is there.
+
+## 34. What is event listener?
+An event listener in JavaScript is a function that waits for an event to occur and then responds to it.
+
+```javascript
+document.getElementById("myButton").addEventListener("click", ()=> console.log('click')); // addEventListener() is the event listener and click is the event
+```
+![alt text](public/images/event-event-listner-callback-func.png)
+
+## 35. Why do we need to remove event listener?
+Event listeners are heavy, that means it takes memory. When event listener is attached its kind a form a closure, and even when the call stack is empty, but still event listner not freeing up the memory, because browser don't know when the event will be called. So for this reason when we are not using event listener we should remove that. 
+
+If in a page many event listners are there, and when we are going outside that page we need to remove all those event listeners that holding the memory, to free up the memory, otherwise it will held the memory and make our application slow. This holding the memory concept is called **memory leak**
+
+```javascript
+element.addEventListener("mousedown", handleMouseDown, true);
+-------
+-------
+element.removeEventListener("mousedown", handleMouseDown, false); // Fails
+element.removeEventListener("mousedown", handleMouseDown, true); // Succeeds
+```
+The first call fails because the value of useCapture doesn't match. The second succeeds, since useCapture matches up.
+
+Another example
+```javascript
+const body = document.querySelector("body");
+const clickTarget = document.getElementById("click-target");
+const mouseOverTarget = document.getElementById("mouse-over-target");
+
+let toggle = false;
+function makeBackgroundYellow() {
+  body.style.backgroundColor = toggle ? "white" : "yellow";
+
+  toggle = !toggle;
+}
+
+clickTarget.addEventListener("click", makeBackgroundYellow, false);
+
+mouseOverTarget.addEventListener("mouseover", () => {
+  clickTarget.removeEventListener("click", makeBackgroundYellow, false);
+});
+
+```
