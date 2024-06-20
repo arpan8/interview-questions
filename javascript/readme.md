@@ -182,6 +182,14 @@ null === undefined // false
 NaN == NaN or NaN === NaN // false
 []==[] or []===[] //false, refer different objects in memory
 {}=={} or {}==={} //false, refer different objects in memory
+
+function x(a, b){
+	if(a === b)
+		return "equal"
+	else
+		return "not equal"
+}
+console.log(x(10, '10')) // not equal
 ```
 
 ## 15. What is a temporal dead zone?
@@ -395,8 +403,46 @@ let avg = function avg(x,y, z) {
 let res = avg(10, 20, assign);  // here avg function is higher order function because it takes assign function as an argument also returning it
 console.log(res)
 ```
+## 30. Print all numbers between 1 to N without using any loop.
+```javascript
+function collectNumbers(n, arr) {
+    // Base case: if n is 0, stop the recursion
+    if (n <= 0) {
+        return;
+    }
+    // Recursively call the function with n-1
+    collectNumbers(n - 1, arr);
+    // Push the current number to the array
+    arr.push(n);
+}
 
-## 30. What is callback function?
+const N = 10;
+const numbersArray = [];
+collectNumbers(N, numbersArray);
+console.log(numbersArray); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+## 31. Can you freeze a javascript object ?
+
+```javascript
+const person = {
+  name: 'abc'
+}
+
+Object.freeze(person)
+person.age = 23
+person.name = 'xyz'
+console.log(person) // {name: 'abc'}
+```
+# 32. Compare 2 objects
+```javascript
+const obj1 = { name: 'John', age: 27}
+const obj2 = { name: 'John', age: 27}
+
+console.log(obj1 == obj2) //false
+console.log(obj1 === obj2) //false
+console.log(JSON.stringify(obj1) == JSON.stringify(obj2)) // true
+``` 
+## 33. What is callback function?
 A function which can be taken as argument to another function that is called call back function.
 ```javascript
 
@@ -415,4 +461,4 @@ x(function yz(){
 ```
 Here the x, y, after 5 sec timer will get printed.
 
-Here yz is the call back function, and under setTimeout parameter another call back function is there. 
+Here yz is the call back function, and under setTimeout parameter another call back function is there.
