@@ -1,0 +1,1 @@
+![alt text](../../public/machine-codes/quote-generator.png)
