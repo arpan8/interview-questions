@@ -505,3 +505,27 @@ mouseOverTarget.addEventListener("mouseover", () => {
 });
 
 ```
+## 36. What is window object ?
+The window object in JavaScript represents the browser window or frame. Window object is in the global scope of the javascript. So using this object we can access webapi, dom apis, console log, fetch(), geolocation, localstorage etc.
+
+## 37. What is event loop?
+Event loop has one job, its just continuously monitoring call stack, **callback queue**, and **microtask queue**. When the call stack is empty event loop checks the call back queue and **microtask queue** for any function present in there or not. If any function present in the call back queue or **microtask queue**, event loop will send the function to the call stack.
+
+**Microtask queue** has ***higher priority*** than **callback queue**, so when call stack is empty event loop first check the **microtask queue**, if **microtask queue** is empty then checks the **callback queue**.
+
+So event loop is just like a gate keeper between call stack and **callback queue**, **microtask queue**.
+
+*Which callback function go to microtask queue?*
+All the callback function which comes through **promises** will go inside **microtask queue**. There is another thing known as **mutation observer**, it basically alwasys checks is there any kind of mutation/changes happend in the DOM tree or not. If some mutation happened in the DOM tree, then **mutation observer** executes some callbacks and that callbacks goes to the **microtask queue**.
+
+*Which callback functions go to callback queue?*
+All the callbacks coming from the **setTimeout()**or the **DOM apis** will go the **callback queue**
+
+***callback queue are also known as task queue, evemt queue***
+
+![alt text](public/images/event-loop.png)
+
+## 38. What is starvation?
+Microtask queue has the higher priority than callback queue, so event loop checks first in the microtask queue, and if there are lot of callback functions are there, so one by one that functions will go to the call stack for execution in FIFO order. 
+In the mean time callback queue also has some callback functions waiting to go to the call stack but it could not go because until the microtask queue is empty till then event loop will not pass any callback queue from the callback queue. This situation is called **starvation** of the tasks in the **callback queue**.
+
