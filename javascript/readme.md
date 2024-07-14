@@ -509,7 +509,7 @@ mouseOverTarget.addEventListener("mouseover", () => {
 The window object in JavaScript represents the browser window or frame. Window object is in the global scope of the javascript. So using this object we can access webapi, dom apis, console log, fetch(), geolocation, localstorage etc.
 
 ## 37. What is event loop?
-Event loop has one job, its just continuously monitoring call stack, **callback queue**, and **microtask queue**. When the call stack is empty event loop checks the call back queue and **microtask queue** for any function present in there or not. If any function present in the call back queue or **microtask queue**, event loop will send the function to the call stack.
+Event loop has one job, its just continuously monitoring **call stack**, **callback queue**, and **microtask queue**. When the call stack is empty event loop checks the **callback queue** and **microtask queue** for any function present in there or not. If any function present in the call back queue or **microtask queue**, event loop will send the function to the call stack.
 
 **Microtask queue** has ***higher priority*** than **callback queue**, so when call stack is empty event loop first check the **microtask queue**, if **microtask queue** is empty then checks the **callback queue**.
 
