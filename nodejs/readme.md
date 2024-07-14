@@ -104,7 +104,7 @@ So event loop is just like a gate keeper between call stack and **callback queue
 *Which callback function go to microtask queue?*
 All the callback function which comes through **promises** will go inside **microtask queue**. There is another thing known as **mutation observer**.
 *Which callback functions go to callback queue?*
-All the callbacks coming from the **setTimeout()**or the **events genrated during varioius tasks** will go the **callback queue or event queue**
+All the callbacks coming from the **setTimeout()** or the **events genrated during varioius tasks** will go the **callback queue or event queue**
 
 The event loop in the chat application ensures that messages are processed one by one, allowing the server to handle multiple messages from different users efficiently.
 
