@@ -307,3 +307,65 @@ In the script we can customize the script and in the dependencies all the packag
   }
 }
 ```
+## 18. What is modules in nodejs? What is the difference between modules and functions?
+A module is a reusable block of code. It can include a set of functions, classes, objects, or variables.
+In nodejs a js file can be treated as module.
+
+A function is block of codes designed to perform a particular task. 
+The functions contain inside a module.
+
+```javascript
+// math.js
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+module.exports = { add, subtract };
+
+// app.js
+const math = require('./math');
+console.log(math.add(2, 3)); // Outputs: 5
+
+```
+## 19. How many ways are there to export a module?
+- module.exports = <function name>
+- exports.<function name> ={}
+
+## 20. What will happen if the modules are not exported?
+If the modules are not exported then inside the modules all the functions, variables, objects, class can not be called outside the module.
+
+## 21. What is module wrapper function in nodejs?
+The module wrapper function is a concept in Node.js that refers to the function that wraps the code of a module before it is executed. This function is used to encapsulate the module code and provide a private scope for its variables and functions.
+
+When Node.js loads a module, it wraps the module code in a function before executing it. This function is called the “module wrapper function” and is used to encapsulate the module code. The module wrapper function has the following structure:
+
+```javascript
+(function (exports, require, module, __filename, __dirname) {
+  // module code
+})
+```
+## 22. What is require? Difference between import and require.
+Require() is a built-in function in Node.js used to load modules. It takes the module’s path as an argument and returns the exported content of the module. Require() is synchronous, meaning it loads modules one after another, blocking the execution until the module is loaded.
+
+Import() is a feature introduced in ES6. It is used to import modules into a JavaScript file. Import() is asynchronous, meaning it loads modules in parallel, without blocking the execution.
+
+Difference between require() and import() is that require() can be called from anywhere inside the program, whereas import() cannot be called conditionally, it always runs at the beginning of the file.
+
+To use the require() statement, a module must be saved with .js extension as opposed to .mjs when the import() statement is used.
+
+ES modules can be loaded dynamically via the import() function unlike require().
+
+```javascript
+// Using require()
+var myModule = require('./myModule.js');
+console.log(myModule.exports);  // Output: "Hello Geek"
+
+// Using import()
+import myModule from './myModule.js';
+console.log(myModule);  // Output: "Hello Geek"
+```
+ 
