@@ -111,3 +111,169 @@ The event loop in the chat application ensures that messages are processed one b
 - **Event-Driven Architecture**: An event-driven architecture is a design paradigm where the flow of the program is determined by events. It is highly suitable for applications that require real-time interactions.
 
 The entire chat application can be seen as an event-driven system, where user interactions (sending and receiving messages) drive the behavior of the application.
+
+## 13. Show some of the examples from where events, event emitter, event queue, event loop and event architechture can be understood.
+
+ ***File Upload Processing***
+
+ ```javascript
+const http = require('http');
+const fs = require('fs');
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
+
+const uploadFile = (req, res) => {
+    const filePath = './uploads/file.txt';
+    const writeStream = fs.createWriteStream(filePath);
+
+    req.pipe(writeStream);
+    req.on('end', () => {
+        eventEmitter.emit('fileUploaded', filePath);
+        res.end('File uploaded');
+    });
+};
+
+//event listener
+eventEmitter.on('fileUploaded', (filePath) => {
+    console.log(`File saved to ${filePath}`);
+    //emits event
+    eventEmitter.emit('generateThumbnail', filePath);
+});
+
+//event listener
+eventEmitter.on('generateThumbnail', (filePath) => {
+    console.log(`Generating thumbnail for ${filePath}`);
+    // Thumbnail generation logic here
+    //emits event
+    eventEmitter.emit('updateDatabase', filePath);
+});
+
+//event listener
+eventEmitter.on('updateDatabase', (filePath) => {
+    console.log(`Updating database for ${filePath}`);
+    // Database update logic here
+});
+
+const server = http.createServer(uploadFile);
+server.listen(3000, () => {
+    console.log('Server listening on port 3000');
+});
+
+ ```
+
+ ***Monitoring System***
+
+ ```javascript
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
+
+const monitorCPUUsage = () => {
+    const cpuUsage = Math.random() * 100; // Simulate CPU usage
+    console.log(`Current CPU usage: ${cpuUsage}%`);
+
+    if (cpuUsage > 80) {
+        eventEmitter.emit('highCPUUsage', cpuUsage);
+    }
+};
+
+eventEmitter.on('highCPUUsage', (cpuUsage) => {
+    console.log(`Alert! High CPU usage detected: ${cpuUsage}%`);
+    // Additional alerting logic here
+});
+
+setInterval(monitorCPUUsage, 1000);
+
+ ```
+
+ ***Notification System***
+
+ ```javascript
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
+
+const notifyUser = (notification) => {
+    console.log(`Sending notification to user: ${notification}`);
+    // Notification sending logic here
+};
+
+eventEmitter.on('newMessage', (message) => {
+    const notification = `You have a new message: ${message}`;
+    notifyUser(notification);
+});
+
+eventEmitter.on('systemUpdate', (update) => {
+    const notification = `System update: ${update}`;
+    notifyUser(notification);
+});
+
+// Simulate events
+eventEmitter.emit('newMessage', 'Hello, world!');
+eventEmitter.emit('systemUpdate', 'Version 1.2.3 released');
+
+ ```
+
+ ***Real time chat applications***
+
+**File: chat.js**
+
+ ```javascript
+const EventEmitter = require('events');
+
+class Chat extends EventEmitter {}
+
+const chat = new Chat();
+
+module.exports = chat;
+
+```
+
+**File: server.js**
+```javascript
+const http = require('http');
+const socketIo = require('socket.io');
+const chat = require('./chat'); // Import the chat event emitter
+
+const server = http.createServer((req, res) => {
+    res.end('Chat server running');
+});
+
+const io = socketIo(server);
+
+// Listen for new connections
+io.on('connection', (socket) => {
+    console.log('User connected');
+
+    // Emit join event when a user connects
+    chat.emit('join', 'User');
+
+    // Listen for message event from client
+    socket.on('message', (msg) => {
+        chat.emit('message', msg);
+    });
+
+    // Event listener for the join event
+    chat.on('join', (user) => {
+        socket.broadcast.emit('message', `${user} joined the chat`);
+    });
+
+    // Event listener for the message event and broadcast it to all clients
+    chat.on('message', (msg) => {
+        io.emit('message', msg);
+    });
+
+    // Emit leave event when a user disconnects
+    socket.on('disconnect', () => {
+        chat.emit('leave', 'User');
+    });
+
+    // Event listener for the leave event
+    chat.on('leave', (user) => {
+        io.emit('message', `${user} left the chat`);
+    });
+});
+
+server.listen(3000, () => {
+    console.log('Server is listening on port 3000');
+});
+
+```
