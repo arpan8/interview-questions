@@ -277,3 +277,33 @@ server.listen(3000, () => {
 });
 
 ```
+## 14. What is NPM?
+NPM (Node package manager) is package manager of javascript, it manages all the packages and its dependency in a node project.
+
+## 15. What is role node_modules folder?
+In the node_modules folder all the packages and sub packages are stored which are used in a particular node project.
+
+## 16. What is the role package.json?
+package.json consists of all the information of a project, like name, description, version, scripts, author, license, dependencies.
+In the script we can customize the script and in the dependencies all the packages and its versions are mentioned, same in the dev dependencies.
+
+## 17. What is the difference between dependencies and dev dependencies?
+**Dependencies**: These are the packages that are required for the project to run in a production or deployment environment. They are necessary for the application’s core functionality and are typically required at runtime. When you install the project dependencies using **npm install**, the packages listed in the dependencies section are installed.
+
+**Dev Dependencies**: These are the packages that are only required during development, such as testing frameworks, build tools, and development-specific utilities. They are not necessary for the application to run in a production environment but are helpful during development and testing phases. When you install the project dependencies along with dev dependencies using **npm install**, the packages listed in both the dependencies and devDependencies sections are installed.
+
+```javascript
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.17"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "eslint": "^7.28.0",
+    "mocha": "^9.0.1"
+  }
+}
+```
