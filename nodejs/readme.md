@@ -332,8 +332,8 @@ console.log(math.add(2, 3)); // Outputs: 5
 
 ```
 ## 19. How many ways are there to export a module?
-- module.exports = <function name>
-- exports.<function name> ={}
+- module.exports = function name
+- exports.function name ={}
 
 ## 20. What will happen if the modules are not exported?
 If the modules are not exported then inside the modules all the functions, variables, objects, class can not be called outside the module.
