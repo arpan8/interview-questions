@@ -368,4 +368,120 @@ console.log(myModule.exports);  // Output: "Hello Geek"
 import myModule from './myModule.js';
 console.log(myModule);  // Output: "Hello Geek"
 ```
- 
+## 23. What are the types of modules in nodejs?
+- Built in modules(core modules): these modules present in the nodejs e.g. fs, path, http, os, events, crypto etc.
+- Local modules: the modules created by developers.
+- Third party modules: these are external packages or libraries, need to install it e.g. express, morgan, nodemon.
+
+## 24. What is middleware in nodeJs?
+Middleware is just a function which has three parameters request, response, next. This function handles the http requests, perform some operations then passes the control to the next function. the parameter next is a callback function which helps to pass the control to next function.
+
+```javascript
+// Middleware for authentication
+const authenticateMiddleware = (req, res, next) => {
+  if (req.headers.authorization === 'Bearer token') {
+    next(); // Proceed to the next middleware
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+};
+
+// Middleware for logging
+const loggerMiddleware = (req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next(); // Proceed to the next middleware
+};
+
+// Apply middleware to specific routes
+app.get('/protected', authenticateMiddleware, loggerMiddleware, (req, res) => {
+  res.send('Protected Route');
+});
+```
+## 25. What is the purpose of app.use() in expressJs?
+app.use() is used to executes middleware functions or routes globally.
+
+More specifically key purposes are:
+- **Mounting middleware:** app.use allows you to attach middleware functions to a specific path or route. Middleware functions can perform tasks such as authentication, request body parsing, error handling, and more.
+- **Route registration:** By using app.use, you can register routes (e.g., GET, POST, PUT, DELETE) at a specific path. This enables you to handle HTTP requests and responses accordingly.
+- **Path prefixing:** app.use enables path prefixing, allowing you to define a common prefix for multiple routes. This helps maintain a consistent routing structure and reduces code duplication.
+- **Order of execution:** The order in which middleware functions are registered using app.use matters. Middleware functions are executed in the order they are defined, allowing you to chain multiple functions together to achieve complex logic.
+
+## 26. How to use middleware globally for specific routes in expressjs?
+```javascript
+const express = require('express');
+const app = express();
+
+function myMiddleware(req, res, next) {
+  console.log('Middleware executed');
+  next();
+}
+app.get('/specific-route', myMiddleware, (req, res) => {
+  res.send('This route uses the middleware');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+## 27. What is the request pipeline in expressJs?
+Request pipeline is a series of middleware functions that handles the incoming http requests and pass the control to next function.
+
+## 28. What are the types of middleware's?
+- **Application-level middleware:** This middleware handles all the incoming requests in entire application. e.g. Logging
+```javascript
+const app = express();
+
+app.use((req, res, next) => {
+  console.log('Application-level middleware');
+  next();
+});
+
+app.get('/route', (req, res) => {
+  res.send('Hello World');
+});
+```
+- **Router-level middleware:** This middleware is used for the specific routes, not all incoming requestes. e.g. authentication for private routes.
+```javascript
+const express = require('express');
+const app = express();
+
+function myMiddleware(req, res, next) {
+  console.log('Middleware executed');
+  next();
+}
+app.get('/specific-route', myMiddleware, (req, res) => {
+  res.send('This route uses the middleware');
+});
+
+app.get('/another-route', (req, res) => {
+  res.send('This route uses the middleware');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+- **Error handling mddleware:**  This middleware are defined with four arguments: (err, req, res, next). They handle errors and are called when next() is passed with an error.
+```javascript
+const express = require('express');
+const app = express();
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+```
+- **Built-in middleware:** Express has some built-in middleware functions that can be used for common tasks: *express.static: Serves static files, express.json: Parses incoming requests with JSON payloads, express.urlencoded: Parses incoming requests with URL-encoded payloads.*
+```javascript
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+```
+- **Third-party middleware:** These are middleware functions created by the community and are often available via npm. Examples include *body-parser, morgan, cookie-parser, and cors*.
+ ```javascript
+const morgan = require('morgan');
+const cors = require('cors');
+
+app.use(morgan('tiny'));
+app.use(cors());
+```
