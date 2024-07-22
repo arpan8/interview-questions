@@ -485,3 +485,26 @@ const cors = require('cors');
 app.use(morgan('tiny'));
 app.use(cors());
 ```
+## 29. What is routing?
+Routing is a process of directing incoming http requests to appropriate handler function based on the request's method(GET, POST, PUT, DELETE) and url path.
+here two parameters are passed one is **url endpoint** other one is **route handler** which is used to process the request and generate response.
+
+There are one more thing called **route parameters** which allows to capture the dynamic value from url.
+```javascript
+const express = require('express');
+const app = express();
+
+app.get('/route', (req, res) => {
+  res.send('This route uses the middleware');
+});
+
+app.get('/user/:id', (req, res) => {
+  const {id} = req.params
+  res.send(`User id: ${id}`);
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+## 30. What are router object and router method and how to implement them?
