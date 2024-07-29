@@ -373,7 +373,7 @@ console.log(myModule);  // Output: "Hello Geek"
 - Local modules: the modules created by developers.
 - Third party modules: these are external packages or libraries, need to install it e.g. express, morgan, nodemon.
 
-## 24. What is middleware in nodeJs?
+## 24. How to implemeent middleware in nodeJs?
 Middleware is just a function which has three parameters request, response, next. This function handles the http requests, perform some operations then passes the control to the next function. the parameter next is a callback function which helps to pass the control to next function.
 
 ```javascript
