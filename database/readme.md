@@ -962,3 +962,94 @@ END
 ***Note: Some people prefer to assign the SELECT statement to a category of its own called: DQL. Data Query Language.***
 
 **DCL (Data Control Language)**: These statements are used to set privileges such as Grant and Revoke database access permission to the specific user. Commands are Grant, Revoke
+
+## 33. Write a SQL to find the 2nd highest salary?
+
+This create and insert statement can be used in sql playground, to get a table with values.
+
+One can try this queries to check the answer
+
+**MySQL8** used here
+```sql
+Create table Employees
+(
+ ID int AUTO_INCREMENT PRIMARY KEY,
+ FirstName varchar(50),
+ LastName varchar(50),
+ Gender varchar(50),
+ Salary int
+);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Mark', 'Hastings', 'Male', 60000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Steve', 'Pound', 'Male', 45000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Philip', 'Hastings', 'Male', 45000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Mary', 'Lambeth', 'Female', 30000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Valarie', 'Vikings', 'Female', 35000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('John', 'Stanmore', 'Male', 80000);
+```
+
+**Approach 1 using limit**
+```sql
+select salary from Employees order by salary DESC limit 1 offset 1;
+```
+**Approach 2 using subquery**
+```sql
+select Max(salary) from Employees where (select Max(salary) from Employees);
+```
+
+# Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
+
+## 34. Write a SQL to find the nth highest salary?
+
+This create and insert statement can be used in sql playground, to get a table with values.
+
+One can try this queries to check the answer
+
+**MySQL8** used here
+```sql
+Create table Employees
+(
+ ID int AUTO_INCREMENT PRIMARY KEY,
+ FirstName varchar(50),
+ LastName varchar(50),
+ Gender varchar(50),
+ Salary int
+);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Mark', 'Hastings', 'Male', 60000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Steve', 'Pound', 'Male', 45000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Philip', 'Hastings', 'Male', 45000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Mary', 'Lambeth', 'Female', 30000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('Valarie', 'Vikings', 'Female', 35000);
+
+Insert into Employees (FirstName, LastName, Gender, Salary) values ('John', 'Stanmore', 'Male', 80000);
+```
+
+**Approach 1 using limit and sub-query**
+```sql
+select salary from (
+select distinct salary
+  from Employees
+  order by Salary desc
+  limit 5
+) Res
+order by salary asc
+limit 1;
+```
