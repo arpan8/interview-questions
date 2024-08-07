@@ -1007,7 +1007,7 @@ select salary from Employees order by salary DESC limit 1 offset 1;
 ```
 **Approach 2 using subquery**
 ```sql
-select Max(salary) from Employees where (select Max(salary) from Employees);
+select Max(salary) from Employees where salary < (select Max(salary) from Employees);
 ```
 
 ## 2. Write a SQL to find the nth highest salary?
