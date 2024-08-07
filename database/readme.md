@@ -963,7 +963,11 @@ END
 
 **DCL (Data Control Language)**: These statements are used to set privileges such as Grant and Revoke database access permission to the specific user. Commands are Grant, Revoke
 
-## 33. Write a SQL to find the 2nd highest salary?
+# Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
+
+## SQL questions
+
+## 1. Write a SQL to find the 2nd highest salary?
 
 This create and insert statement can be used in sql playground, to get a table with values.
 
@@ -1006,9 +1010,7 @@ select salary from Employees order by salary DESC limit 1 offset 1;
 select Max(salary) from Employees where (select Max(salary) from Employees);
 ```
 
-# Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
-
-## 34. Write a SQL to find the nth highest salary?
+## 2. Write a SQL to find the nth highest salary?
 
 This create and insert statement can be used in sql playground, to get a table with values.
 
