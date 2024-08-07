@@ -965,7 +965,7 @@ END
 
 # Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
 
-## SQL questions
+## SQL questions i used this playground https://www.db-fiddle.com/
 
 ## 1. Write a SQL to find the 2nd highest salary?
 
@@ -1050,8 +1050,53 @@ select salary from (
 select distinct salary
   from Employees
   order by Salary desc
-  limit 5
-) Res
+  limit 5 -- here the value can be anything like 1,2,3,4 .... up to n, this limit mainly depicts the nth number 
+) as Result
 order by salary asc
 limit 1;
 ```
+**Approach 2 using limit, sub-query and dense rank**
+```sql
+select salary 
+from (
+  select salary,
+  DENSE_RANK() OVER (order by salary desc) as ranked_salary
+    FROM Employees
+) as Result
+where ranked_salary = 3 -- here the value can be anything like 1,2,3,4 .... up to n, this limit mainly depicts the nth number
+limit 1;
+```
+**Approach 3 using limit, sub-query, dense rank and CTE(Common Table Expressions)**
+```sql
+WITH RESULT AS (
+    SELECT salary,
+           DENSE_RANK() OVER (ORDER BY salary DESC) AS ranked_salary
+    FROM Employees
+)
+SELECT salary
+FROM RESULT
+WHERE ranked_salary = 5 -- here the value can be anything like 1,2,3,4 .... up to n, this limit mainly depicts the nth number
+LIMIT 1;
+```
+### Note: Approach do not use
+```sql
+WITH RESULT AS (
+    SELECT salary,
+           ROW_NUMBER() OVER (ORDER BY salary DESC) AS ranked_salary
+    FROM Employees
+)
+SELECT salary
+FROM RESULT
+WHERE ranked_salary = 5
+LIMIT 1;
+
+select salary 
+from (
+  select salary,
+  ROW_NUMBER() OVER (order by salary desc) as ranked_salary
+    FROM Employees
+) as Result
+where ranked_salary = 3
+limit 1;
+```
+**Do not use ROW_NUMBER() for this query, if there are no duplicate data, then only it gives the correct value otherwise result will come wrong**
