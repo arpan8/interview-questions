@@ -1,4 +1,4 @@
-# Javascript interview-questions
+# Javascript Interview Questions
 
 ## 1. What is Javascript?
 Javascript is a high-level, interpreted (execute line by line) programming language, widely used in web development.
