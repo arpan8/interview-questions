@@ -746,7 +746,7 @@ A JOIN clause is used to combine rows from two or more tables, based on a relate
 * Full Join: Full join returns all the records when there is a match in any of the tables. Therefore, it returns all the rows from the left-hand side table and all the rows from the right-hand side table.
 ![alt text](https://github.com/youssefHosni/Data-Science-Interview-Questions/blob/main/Figures/Joins%20in%20SQL.png)
 
-## 17. Define the primary, foreign, and unique keys and the differences between them? ###
+## 17. Define the primary, foreign, and unique keys, candidate key and the differences between them?
 
 **Primary key:** Is a key that is used to uniquely identify each row or record in the table, it can be a single column or composite pk that contains more than one column
 
@@ -763,6 +763,8 @@ A JOIN clause is used to combine rows from two or more tables, based on a relate
 **Unique key:** It's a key that can identify each row in the table as the primary key but it can contain one null value
 
 * Every table can have more than one Unique key
+
+**Candidate key** A table may have more than one combination of columns that could uniquely identify the rows in a table; each combination is a candidate key. During database design you can pick up one of the candidate keys to be the primary key. For example, in the supplier table supplierid and suppliername can be candidate key but you will only pick up supplierid as the primary key.
 
 
 ## 18. What is the difference between BETWEEN and IN operators in SQL?
@@ -865,3 +867,98 @@ Here are some of the reasons why the rank function may skip a sequence in MySQL:
 3. The query may have filtering or grouping clauses that affect the ranking. For example, if a query filters out some rows or groups them by a different column, the ranking may not be sequential.
 
 It's important to note that the ranking function in MySQL behaves differently from the ranking function in other databases, so the same query may produce different results in different database systems.
+
+## 24. How can you increase SQL performance?
+
+Every index increases the time takes to perform INSERTS, UPDATES, and DELETES, so the number of indexes should not be too much. Try to use maximum 4-5 indexes on one table, not more. If you have read-only table, then the number of indexes may be increased.
+
+Keep your indexes as narrow as possible. This reduces the size of the index and reduces the number of reads required to read the index.
+
+Try to create indexes on columns that have integer values rather than character values.
+
+If you create a composite (multi-column) index, the orders of the columns in the key are very important. Try to order the columns in the key as to enhance selectivity, with the most selective columns to the leftmost of the key.
+
+If you want to join several tables, try to create surrogate integer keys for this purpose and create indexes on their columns. Create surrogate integer primary key (identity for example) if your table will not have many insert operations.
+
+Clustered indexes are more preferable than nonclustered, if you need to select by a range of values or you need to sort results set with GROUP BY or ORDER BY. If your application will be performing the same query over and over on the same table, consider creating a covering index on the table.
+
+You can use the SQL Server Profiler Create Trace Wizard with "Identify Scans of Large Tables" trace to determine which tables in your database may need indexes. This trace will show which tables are being scanned by queries instead of using an index.
+
+## 25. What is SQL injection?
+
+It is a Form of attack on a database-driven Web site in which the attacker executes unauthorized SQL commands by taking advantage of insecure code on a system connected to the Internet, bypassing the firewall. SQL injection attacks are used to steal information from a database from which the data would normally not be available and/or to gain access to an organization’s host computers through the computer that is hosting the database.
+
+SQL injection attacks typically are easy to avoid by ensuring that a system has strong input validation.
+
+As name suggest we inject SQL which can be relatively dangerous for the database. Example this is a simple SQL
+
+SELECT email, passwd, login_id, full_name FROM members WHERE email = 'x'
+
+Now somebody does not put “x” as the input but puts “x ; DROP TABLE members;”. So the actual SQL which will execute is:-
+
+SELECT email, passwd, login_id, full_name FROM members WHERE email = ‘x’; DROP TABLE members;
+
+Think what will happen to your database.
+
+## 26. What is an ALIAS command?
+
+ALIAS name can be given to a table or column. This alias name can be referred in WHERE clause to identify the table or column.
+
+Example-. 1 Select st.StudentID, Ex.Result from student st, Exam as Ex where st.studentID = Ex. StudentID
+
+Here, st refers to alias name for student table and Ex refers to alias name for exam table.
+
+## 27. What is CLAUSE?
+
+SQL clause is defined to limit the result set by providing condition to the query. This usually filters some rows from the whole set of records.
+
+Example – Query that has WHERE condition
+
+Query that has HAVING condition.
+
+## 28. What are aggregate and scalar functions?
+
+Aggregate functions are used to evaluate mathematical calculation and return single values. This can be calculated from the columns in a table. Scalar functions return a single value based on the input value.
+
+Example -.
+
+Aggregate – max(), count – Calculated with respect to numeric.
+
+Scalar – UCASE(), NOW() – Calculated with respect to strings.
+
+## 29. Can you join 3 tables together with inner join?
+
+```sql
+SELECT <fieldlist> FROM Faculty AS f
+INNER JOIN Division AS d ON d.FacultyID = f.FacultyID
+INNER JOIN Country AS c ON c.FacultyID = f.FacultyID
+INNER JOIN Nationality AS n ON n.FacultyID = f.FacultyID
+```
+
+## 30. What is the difference between UNION and UNION ALL?
+
+UNION – returns all distinct rows selected by either query
+
+UNION ALL – returns all rows selected by either query, including all duplicates.
+
+## 31. What is Case Function?
+
+The CASE function lets you evaluate conditions and return a value when the first condition is met (like an IF-THEN-ELSE statement).
+```sql
+CASE expression
+WHEN condition1 THEN result1
+WHEN condition2 THEN result2
+...
+WHEN conditionN THEN resultN
+ELSE result
+END  
+```
+## 32. What are different types of statements supported by SQL?
+
+**DDL (Data Definition Language)**: It is used to define the database structure such as tables. It includes three statements such as Create, Alter, and Drop.
+
+**DML (Data Manipulation Language)**: These statements are used to manipulate the data in records. Commonly used DML statements are Select, Insert, Update, and Delete.
+
+***Note: Some people prefer to assign the SELECT statement to a category of its own called: DQL. Data Query Language.***
+
+**DCL (Data Control Language)**: These statements are used to set privileges such as Grant and Revoke database access permission to the specific user. Commands are Grant, Revoke
