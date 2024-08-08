@@ -1162,7 +1162,7 @@ FROM EmployeeCTE E1
 LEFT JOIN EmployeeCTE E2
 ON E1.ManagerID = E2.EmployeeId;
 ```
-## 4. Write a query to remove duplicate rows except one?
+## 4. Write a SQL query to remove duplicate rows except one?
 
 This create and insert statement can be used in sql playground, to get a table with values.
 
@@ -1225,4 +1225,97 @@ JOIN (
 ON e.ID = Duplicates.ID;
     
 SELECT * FROM Employees;
+```
+## 5. Write a SQL query to find employees hired in last n months?
+
+This create and insert statement can be used in sql playground, to get a table with values.
+
+One can try this queries to check the answer
+
+**MySQL8** used here
+
+```sql
+-- Create table with HireDate column
+CREATE TABLE Employees (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Gender VARCHAR(50),
+    Salary INT,
+    HireDate DATE
+);
+-- Insert data with HireDate values
+INSERT INTO Employees (FirstName, LastName, Gender, Salary, HireDate) 
+VALUES 
+('Ben', 'Hoskins', 'Male', 70000, '2023-01-15'),
+
+('Mark', 'Hastings', 'Male', 60000, '2022-12-10'),
+
+('Steve', 'Pound', 'Male', 45000, '2022-11-20'),
+
+('Ben', 'Hoskins', 'Male', 70000, '2023-01-15'),
+
+('Philip', 'Hastings', 'Male', 45000, '2023-03-05'),
+
+('Mary', 'Lambeth', 'Female', 30000, '2023-02-25'),
+
+('Valarie', 'Vikings', 'Female', 35000, '2023-04-10'),
+
+('John', 'Stanmore', 'Male', 80000, '2022-10-01');
+
+```
+
+***Note: It can be said for find the hired employee in  last n months, days, or year the same query willused with little changes***
+
+**For Months**
+
+```sql
+SELECT *, TIMESTAMPDIFF(MONTH, HireDate, CURDATE()) as Diff
+FROM Employees
+WHERE TIMESTAMPDIFF(MONTH, HireDate, CURDATE()) BETWEEN 1 AND 17; --- here 17 can be anything up to n
+```
+**For Days**
+
+```sql
+SELECT *, TIMESTAMPDIFF(DAY, HireDate, CURDATE()) as Diff
+FROM Employees
+WHERE TIMESTAMPDIFF(DAY, HireDate, CURDATE()) BETWEEN 1 AND 600; --- here 600 can be anything up to n
+```
+**For years**
+
+```sql
+SELECT *, TIMESTAMPDIFF(YEAR, HireDate, CURDATE()) as Diff
+FROM Employees
+WHERE TIMESTAMPDIFF(YEAR, HireDate, CURDATE()) BETWEEN 0 AND 1; --- here 1 can be anything up to n
+```
+
+## 6. Write a SQL query to find rows that contain only numerical data
+
+This create and insert statement can be used in sql playground, to get a table with values.
+
+One can try this queries to check the answer
+
+**MySQL8** used here
+```sql
+CREATE TABLE TestTable (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Value VARCHAR(50)
+);
+INSERT INTO TestTable (Value) VALUES ('123');
+INSERT INTO TestTable (Value) VALUES ('ABC');
+INSERT INTO TestTable (Value) VALUES ('DEF');
+INSERT INTO TestTable (Value) VALUES ('901');
+INSERT INTO TestTable (Value) VALUES ('JKL');
+
+
+SELECT Value
+FROM TestTable
+WHERE IFNULL(CAST(Value AS UNSIGNED), '') = Value;
+```
+**In SQL server query is more easy**
+
+```sql
+SELECT Value 
+FROM TestTable 
+WHERE ISNUMERIC(Value) = 1
 ```
