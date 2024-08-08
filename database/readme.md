@@ -1162,3 +1162,67 @@ FROM EmployeeCTE E1
 LEFT JOIN EmployeeCTE E2
 ON E1.ManagerID = E2.EmployeeId;
 ```
+## 4. Write a query to remove duplicate rows except one?
+
+This create and insert statement can be used in sql playground, to get a table with values.
+
+One can try this queries to check the answer
+
+**MySQL8** used here
+
+```sql
+Create table Employees
+(
+ ID int,
+ FirstName varchar(50),
+ LastName varchar(50),
+ Gender varchar(50),
+ Salary int
+);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (1, 'Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (1, 'Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (1, 'Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (2, 'Mark', 'Hastings', 'Male', 60000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (2, 'Mark', 'Hastings', 'Male', 60000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (2, 'Mark', 'Hastings', 'Male', 60000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (4, 'Steve', 'Pound', 'Male', 45000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (4, 'Steve', 'Pound', 'Male', 45000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (1, 'Ben', 'Hoskins', 'Male', 70000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (4, 'Steve', 'Pound', 'Male', 45000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (6, 'Valarie', 'Vikings', 'Female', 35000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (5, 'John', 'Stanmore', 'Male', 80000);
+
+Insert into Employees (ID, FirstName, LastName, Gender, Salary) values (5, 'John', 'Stanmore', 'Male', 80000);
+
+```
+
+**Approach using sub query**
+
+```sql
+DELETE e
+FROM Employees e
+JOIN (
+    SELECT *
+    FROM (
+        SELECT *, 
+               ROW_NUMBER() OVER (PARTITION BY ID ORDER BY ID ASC) AS RowNums
+        FROM Employees
+    ) AS EmployeeCTE
+    WHERE RowNums  > 1
+) AS Duplicates
+ON e.ID = Duplicates.ID;
+    
+SELECT * FROM Employees;
+```
