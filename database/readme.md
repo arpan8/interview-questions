@@ -1100,3 +1100,65 @@ where ranked_salary = 3
 limit 1;
 ```
 **Do not use ROW_NUMBER() for this query, if there are no duplicate data, then only it gives the correct value otherwise result will come wrong**
+
+## 3. Write a SQL query to get the organization hierarchy?
+
+**1. Employee table contains EmployeeID, EmployeeName, ManagerID columns**
+**2. If an EmpoyeeId is passed then whole organizational hierarchy should be list down .i.e who is the manager of the employyeId passed, who is the managers of manager and so on.**
+
+This create and insert statement can be used in sql playground, to get a table with values.
+
+One can try this queries to check the answer
+
+**MySQL8** used here
+
+```sql
+Create table Employees
+(
+ EmployeeID int AUTO_INCREMENT PRIMARY KEY,
+ EmployeeName varchar(50),
+ ManagerID int,
+ FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID)
+);
+
+Insert into Employees (EmployeeName, ManagerID) values ('John', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Mark', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Steve', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Tom', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Lara', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Simon', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('David', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Ben', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Stacy', NULL);
+Insert into Employees (EmployeeName, ManagerID) values ('Sam', NULL);
+
+Update Employees Set ManagerID = 8 Where EmployeeName IN ('Mark', 'Steve', 'Lara');
+Update Employees Set ManagerID = 2 Where EmployeeName IN ('Stacy', 'Simon');
+Update Employees Set ManagerID = 3 Where EmployeeName IN ('Tom');
+Update Employees Set ManagerID = 5 Where EmployeeName IN ('John', 'Sam');
+Update Employees Set ManagerID = 4 Where EmployeeName IN ('David');
+
+```
+
+**Approach using self join and recursive CTE**
+
+```sql
+WITH RECURSIVE EmployeeCTE AS
+(
+    SELECT EmployeeId, EmployeeName, ManagerID
+    FROM Employees
+    WHERE EmployeeId = 7 -- here the employee id can be anything
+    
+    UNION ALL
+    
+    SELECT e.EmployeeId, e.EmployeeName, e.ManagerID
+    FROM Employees e
+    INNER JOIN EmployeeCTE cte
+    ON e.EmployeeId = cte.ManagerID
+)
+
+SELECT E1.EmployeeName, IFNULL(E2.EmployeeName, 'No Boss') as ManagerName
+FROM EmployeeCTE E1
+LEFT JOIN EmployeeCTE E2
+ON E1.ManagerID = E2.EmployeeId;
+```
