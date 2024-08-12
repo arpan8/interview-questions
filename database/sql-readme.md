@@ -1,6 +1,8 @@
-# Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
+> [!NOTE] 
+> **Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.**
 
-## SQL questions i used this playground https://www.db-fiddle.com/
+> [!TIP]
+> **To write SQL solutions I used this playground *[db-fiddle](https://www.db-fiddle.com/)* (version: MySQL8)**
 
 ## 1. Write a SQL to find the 2nd highest salary?
 
@@ -354,8 +356,11 @@ SELECT Value
 FROM TestTable 
 WHERE ISNUMERIC(Value) = 1
 ```
+<<<<<<< HEAD
 
 
 <!-- https://www.youtube.com/watch?v=pYMc_hxUfLQ&list=PL6n9fhu94yhXcztdLO7i6mdyaegC8CJwR&index=8 -->
 
 <!-- file:///home/cx119@codelogicx.link/Downloads/TOP%2050%20SQl%20queries%20for%20interview.pdf -->
+=======
+>>>>>>> b6908483789da60046f067dba8400485a267052f
