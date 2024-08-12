@@ -42,5 +42,11 @@ CORS (Cross-Origin Resource Sharing) is a security feature in web browsers that 
 
 CORS helps protect users by preventing unauthorized cross-origin requests while allowing legitimate ones when configured correctly.
 
+## 7. What is serialization and deserialization?
 
+Serialization: Converts an object to a storable/transmittable format (like JSON).
+Deserialization: Converts the formatted data back into an object.
+
+> [!NOTE] 
+> **APIs are created using, JAVA, python, and JS and everyone handles object differently, therefore we convert a object to JSON, then we send them**
 
