@@ -354,3 +354,8 @@ SELECT Value
 FROM TestTable 
 WHERE ISNUMERIC(Value) = 1
 ```
+
+
+<!-- https://www.youtube.com/watch?v=pYMc_hxUfLQ&list=PL6n9fhu94yhXcztdLO7i6mdyaegC8CJwR&index=8 -->
+
+<!-- file:///home/cx119@codelogicx.link/Downloads/TOP%2050%20SQl%20queries%20for%20interview.pdf -->
