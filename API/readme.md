@@ -50,3 +50,28 @@ Deserialization: Converts the formatted data back into an object.
 > [!NOTE] 
 > **APIs are created using, JAVA, python, and JS and everyone handles object differently, therefore we convert a object to JSON, then we send them**
 
+## 8. Versioning in Rest API?
+Versioning refers to the multiple versions of the API to maintain the backward compatibility.
+
+## 9. What are authentication and authorization?
+Authentication is the process of verifying the identity of a user by validating there credentials.
+Authorization is the process of allowing an authenticated user to access the resources.
+
+## 10. What are the types of authentication?
+- Basic: User passes credential using post request, credentials are verified and send back the response. The disadvantage is credentials are sent in plain text over the network, so it's not a secured method of authentication.
+- API key authentication: Here, the API owner will share an API key with the users and this key will authenticate the users. The main disadvantage is the shared API key can be stolen or shared, so it's a possibility of data breach.
+- Token based authentication(JWT):  JWT is a compact, URL-safe way to represent claims between two parties. A JWT is composed of three parts: Header, Payload, and Signature.
+    - Advantages:
+        1. Self-Contained: JWTs include all the information needed, reducing server-side storage.
+        2. Scalable: Stateless tokens support scalability across distributed systems.
+        3. Secure: Signed tokens ensure data integrity and authenticity; optional encryption adds extra security.
+    - Disadvantages:
+        1. Token Size: JWTs can become large, affecting performance, especially if the payload is extensive.
+        2. Revocation Complexity: Once issued, JWTs cannot be easily revoked before expiration.
+        3. Sensitive Data: If not encrypted, sensitive data in the payload is visible and could be exposed if not handled properly.
+
+- Mutli factor authentication(MFA): Its enhancing security in online banking, email, and sensitive accounts. Requires two or more verification methods, such as: 
+    1. Something you know: Password or PIN.
+    2. Something you have: Smartphone, hardware token.
+    3. Something you are: Biometric data (fingerprint, face recognition).
+- Cerificate based authentication: Uses digital certificates issued by trusted authorities to authenticate users or devices.
