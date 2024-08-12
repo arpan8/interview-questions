@@ -545,3 +545,13 @@ app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
 ```
+## 33. How to serialize and deserialize in nodejs?
+
+```javascript
+const obj = {
+  id: 1,
+  name: 'abc'
+}
+const jsonStr = JSON.stringify(obj) // serialization
+const jsonPar = JSON.parse(jsonStr) // deserialization
+```
