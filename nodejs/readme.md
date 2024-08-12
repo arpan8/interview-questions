@@ -507,4 +507,28 @@ app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
 ```
-## 30. What are router object and router method and how to implement them?
+## 30. What is express.Router() in Express.js?
+express.Router is a class in in exprresjs which return a new router object.
+
+## 31. What is route chaining in expressjs?
+When a route has the multiple route handler that is called route chaining.
+```javascript
+const express = require('express');
+const app = express();
+
+function myMiddleware1(req, res, next) {
+  console.log('Middleware1 executed');
+  next();
+}
+
+function myMiddleware2(req, res, next) {
+  console.log('Middleware2 executed');
+  next();
+}
+app.get('/specific-route', myMiddleware1, myMiddleware2, (req, res) => {
+  res.send('This route uses the middleware');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
