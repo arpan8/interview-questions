@@ -1,0 +1,1 @@
+# I will do here the machine coding(full stack) I faced in my interviews
