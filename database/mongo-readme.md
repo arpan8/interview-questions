@@ -263,7 +263,7 @@ The ObjectId in MongoDB is a unique, 12-byte identifier used as the default prim
     ```
 ### 10. What is the difference between update() and findOneAndUpdate?
 
-- update(): In Mongoose, update() has been deprecated in favor of updateOne(), updateMany().
+- update(): ***In Mongoose, update() has been deprecated in favor of updateOne(), updateMany().***
     - Purpose: Updates documents based on a query.
     - Return Value: Returns an update result, but does not return the updated document(s) by default.
     - Usage: Primarily used for bulk updates or updates where you do not need to retrieve the updated document.
@@ -285,4 +285,24 @@ The ObjectId in MongoDB is a unique, 12-byte identifier used as the default prim
         { new: true } // Return the updated document
         );
         console.log('Updated document:', updatedUser);
+    ```
+### 11. What is the difference between drop and remove function?
+
+- drop(): Completely removes a collection from the database.
+- remove(): Removes documents from a collection based on a specified query.
+
+### 12. How do you insert a document into a MongoDB collection?
+
+- save(): Inserts a single document.
+    - ```javascript
+        async function insertDocument() {
+            const user = new User({ name: 'John Doe', age: 30 });
+            await user.save();
+        }
+    ```
+- insertMany(): Inserts multiple documents.
+    - ```javascript
+        async function insertDocuments() {
+            await User.insertMany([{ name: 'Alice', age: 25 }, { name: 'Bob', age: 28 }]);
+        }
     ```
