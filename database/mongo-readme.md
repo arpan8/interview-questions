@@ -235,3 +235,54 @@ async function deleteDocument() {
 
 deleteDocument();
 ```
+### 8. What is the purpose of the ObjectId in MongoDB?
+
+The ObjectId in MongoDB is a unique, 12-byte identifier used as the default primary key for documents. It ensures each document is uniquely identified and includes a timestamp, machine identifier, and process-specific counter for uniqueness and efficient indexing.
+
+### 9. What is the difference between find() and findOne() in MongoDB?
+
+- find():
+
+    - Returns a cursor to multiple documents that match the query.
+    - Can be used to iterate over or retrieve a list of documents.
+    -  ```javascript
+        async function findDocuments() {
+            const users = await User.find({ age: { $gt: 30 } });
+            console.log('Users found:', users);
+        }
+    ```
+
+- findOne():
+    - Returns a single document that matches the query.
+    - Retrieves only the first document that matches the query, or null if no match is found.
+    -  ```javascript
+        async function findOneDocument() {
+            const user = await User.findOne({ name: 'John Doe' });
+            console.log('User found:', user);
+        }
+    ```
+### 10. What is the difference between update() and findOneAndUpdate?
+
+- update(): In Mongoose, update() has been deprecated in favor of updateOne(), updateMany().
+    - Purpose: Updates documents based on a query.
+    - Return Value: Returns an update result, but does not return the updated document(s) by default.
+    - Usage: Primarily used for bulk updates or updates where you do not need to retrieve the updated document.
+    - ```javascript
+        const result = await User.updateMany(
+        { age: { $lt: 30 } },
+        { $set: { status: 'Junior' } }
+        );
+        console.log('Update result:', result);
+    ```
+- findOneAndUpdate()
+    - Purpose: Finds a single document and updates it.
+    - Return Value: Returns the document after it has been updated, which can be controlled using options **(e.g., new: true to return the updated document)**.
+    - Usage: Useful when you need to retrieve the updated document immediately.
+    - ```javascript
+        const updatedUser = await User.findOneAndUpdate(
+        { name: 'John Doe' },
+        { $set: { age: 31 } },
+        { new: true } // Return the updated document
+        );
+        console.log('Updated document:', updatedUser);
+    ```
