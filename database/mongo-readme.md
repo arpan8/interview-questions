@@ -120,3 +120,118 @@ userSchema.index({ email: 'hashed' });
 const User = mongoose.model('User', userSchema);
 ```
 Each type serves different query and performance needs, optimizing data retrieval in MongoDB.
+
+### 7. How do you perform CRUD operations in MongoDB?
+
+- **Create**
+```javascript
+const { MongoClient } = require('mongodb');
+
+async function createDocument() {
+  const url = 'mongodb://localhost:27017';
+  const client = new MongoClient(url);
+
+  try {
+    await client.connect();
+    const db = client.db('mydatabase');
+    const collection = db.collection('mycollection');
+
+    // Insert one document
+    const result = await collection.insertOne({ name: 'John Doe', age: 30 });
+    console.log('Document inserted:', result.insertedId);
+  } finally {
+    await client.close();
+  }
+}
+
+createDocument();
+```
+- **Read**
+```javascript
+const { MongoClient } = require('mongodb');
+
+async function readDocuments() {
+  const url = 'mongodb://localhost:27017';
+  const client = new MongoClient(url);
+
+  try {
+    await client.connect();
+    const db = client.db('mydatabase');
+    const collection = db.collection('mycollection');
+
+    // Find one document
+    const document = await collection.findOne({ name: 'John Doe' });
+    console.log('Document found:', document);
+
+    // Find all documents
+    const documents = await collection.find({}).toArray();
+    console.log('All documents:', documents);
+  } finally {
+    await client.close();
+  }
+}
+
+readDocuments();
+```
+- **Update**
+```javascript
+const { MongoClient } = require('mongodb');
+
+async function updateDocument() {
+  const url = 'mongodb://localhost:27017';
+  const client = new MongoClient(url);
+
+  try {
+    await client.connect();
+    const db = client.db('mydatabase');
+    const collection = db.collection('mycollection');
+
+    // Update one document
+    const result = await collection.updateOne(
+      { name: 'John Doe' },
+      { $set: { age: 31 } }
+    );
+    console.log('Documents matched:', result.matchedCount);
+    console.log('Documents modified:', result.modifiedCount);
+
+    // Update multiple documents
+    const resultMany = await collection.updateMany(
+      { age: { $gt: 30 } },
+      { $set: { status: 'Senior' } }
+    );
+    console.log('Documents matched:', resultMany.matchedCount);
+    console.log('Documents modified:', resultMany.modifiedCount);
+  } finally {
+    await client.close();
+  }
+}
+
+updateDocument();
+```
+- **Delete**
+```javascript
+const { MongoClient } = require('mongodb');
+
+async function deleteDocument() {
+  const url = 'mongodb://localhost:27017';
+  const client = new MongoClient(url);
+
+  try {
+    await client.connect();
+    const db = client.db('mydatabase');
+    const collection = db.collection('mycollection');
+
+    // Delete one document
+    const result = await collection.deleteOne({ name: 'John Doe' });
+    console.log('Documents deleted:', result.deletedCount);
+
+    // Delete multiple documents
+    const resultMany = await collection.deleteMany({ age: { $lt: 30 } });
+    console.log('Documents deleted:', resultMany.deletedCount);
+  } finally {
+    await client.close();
+  }
+}
+
+deleteDocument();
+```
