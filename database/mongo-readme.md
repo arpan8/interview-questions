@@ -6,6 +6,7 @@ MongoDB is a widely used, open-source NoSQL database designed for high performan
 
 2. What is a NoSQL database, and how does it differ from SQL databases?
 
+NoSQL is ideal for flexibility and scalability, while RDBMS is best for structured data and transactional integrity.
 1. Data Model
     - NoSQL (e.g., MongoDB): Uses a flexible, document-oriented model (JSON-like), allowing for schema-less design and easy evolution.
     - ies on a fixed schema with table-based structures, ideal for structured data and defined relationships.
