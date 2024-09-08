@@ -717,3 +717,53 @@ fetchData()
 ```
 
 ***Promise Chaining then() calls flattens the structure and improves readability compared to deeply nested callbacks. So using Promise and then catch method Callback hell can overcome***
+
+## 46. What is async and await?
+
+- async
+    - In JavaScript, async refers to asynchronous programming, which allows non-blocking operations. It enables functions to execute without waiting for other tasks to complete, facilitating tasks such as network requests, file handling, or timers without freezing the main thread.
+
+    - The async keyword is used to define an asynchronous function. When declare a function as async, it implicitly returns a Promise, and it allows to use the await keyword within it to pause execution until the Promise is resolved or rejected.
+
+- await
+    - The await keyword in JavaScript is used within asynchronous functions to pause the execution of the function until a Promise is resolved or rejected. It simplifies the handling of asynchronous operations by allowing you to write code that looks synchronous, making it more readable and easier to understand. If the Promise is rejected, the await expression throws an error that can be caught using try...catch blocks.
+
+```javascript
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function example() {
+    try{
+        console.log('Start');
+        await delay(2000); // Waits for 2 seconds
+        console.log('End'); // Logs after 2 seconds
+    }catch(err){
+        console.log(err)
+    }
+    
+}
+
+example();
+
+```
+> [!TIP]
+> ***While awaiting JS Engine does not actually wait rather the function is suspended and call stack is free for other stuffs but it looks like program is waiting at that point***
+
+## 47. What is the difference between normal function and async function?
+
+- Normal Function
+    - Returns the value directly.
+    - If the function performs asynchronous operations, it needs to handle them using callbacks or Promises.
+    - Requires chaining .then() or using .catch() for error handling.
+    - May involve nested callbacks (callback hell) or complex promise chains which can be harder to read and maintain. (**Basically callback hell can happen**)
+    - Errors are handled using .catch() in Promises or try-catch in synchronous code.
+    - Suitable for synchronous code or managing asynchronous operations with callbacks or Promises.
+
+- Async Function
+    - Always returns a Promise.
+    - If return a non-Promise value, it is automatically wrapped in a Promise that resolves with that value.
+    - Allows using the await keyword to pause execution until a Promise is resolved or rejected. Simplifies the code by avoiding explicit .then() chains and catch blocks.
+    - Provides a more readable and synchronous-looking syntax, making it easier to follow and manage asynchronous logic.
+    - Errors can be handled using try...catch blocks within the async function, providing a cleaner approach.
+    - Ideal for managing complex asynchronous workflows, where readability and maintainability are important.
