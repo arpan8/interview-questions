@@ -840,4 +840,4 @@ async function handlePromise(){
   handlePromise()
 ```
 
-Here the promises are in the function p1 and p2, when this functions will called i.e first p1 is called that will return the value after 10 second and p2 will be called then and will return the value after 5 second
+Here the promises are in the function p1 and p2, when this functions will called i.e first p1 is called that will return the value after 10 second and p2 will be called then and will return the value after 5 second.
