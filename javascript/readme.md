@@ -767,3 +767,77 @@ example();
     - Provides a more readable and synchronous-looking syntax, making it easier to follow and manage asynchronous logic.
     - Errors can be handled using try...catch blocks within the async function, providing a cleaner approach.
     - Ideal for managing complex asynchronous workflows, where readability and maintainability are important.
+
+## Explain and tell how the output is coming.
+
+```javascript
+
+const p1 = new Promise( (resolve, reject) =>{ 
+  setTimeout(() =>{
+  	resolve("Promise Resolved Value!!")
+  }, 10000);
+});
+
+const p2 = new Promise( (resolve, reject) =>{ 
+  setTimeout(() =>{
+  	resolve("Promise Resolved Value!!")
+  }, 5000);
+});
+
+async function handlePromise(){
+	console.log("Hello World !!")
+	const val = await p1;
+	console.log("Javascript")
+	console.log(val)
+
+	const val2 = await p2;
+	console.log("Javascript 2")
+	console.log(val2)
+}
+
+handlePromise();
+```
+
+Basically, p1 and p2 are getting directly initialised (in global scope) with the promise constructor which takes the callback and immediately executes it so the setTimeouts are already registered even before the handlePromise() invocation.
+
+But, even before the handlePromise() gets executed the setTimeouts from the promise constructors of both p1 and p2 are working asynchronously and the promises are waiting for their resolution. So the registering of setTimeout has nothing to do with the await inside the handlePromise() function.
+
+So when the 10 seconds end then all the console.log will print at once.
+
+**While await p1 and await p2 JS Engine does not actually wait rather the function is suspended from the call stack and call stack is free for other stuffs but it looks like program is waiting at that point**
+
+***Another code***
+
+```javascript
+const p1 = async() => {
+    return new Promise( (resolve, reject) =>{ 
+        setTimeout(() =>{
+            resolve("Promise Resolved Value!!")
+        }, 10000);
+    });
+}
+  
+
+const p2 = async() => {
+    return new Promise( (resolve, reject) =>{ 
+        setTimeout(() =>{
+            resolve("Promise Resolved Value!!")
+        }, 5000);
+    })
+}
+  
+async function handlePromise(){
+    console.log("Hello World !!")
+    const val = await p1();
+    console.log("Javascript")
+    console.log(val)
+
+    const val2 = await p2();
+    console.log("Javascript 2")
+    console.log(val2)
+}
+  
+  handlePromise()
+```
+
+Here the promises are in the function p1 and p2, when this functions will called i.e first p1 is called that will return the value after 10 second and p2 will be called then and will return the value after 5 second
