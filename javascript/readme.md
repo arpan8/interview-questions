@@ -535,17 +535,22 @@ All the callbacks coming from the **setTimeout()**or the **DOM apis** will go th
 Microtask queue has the higher priority than callback queue, so event loop checks first in the microtask queue, and if there are lot of callback functions are there, so one by one that functions will go to the call stack for execution in FIFO order. 
 In the mean time callback queue also has some callback functions waiting to go to the call stack but it could not go because until the microtask queue is empty till then event loop will not pass any callback queue from the callback queue. This situation is called **starvation** of the tasks in the **callback queue**.
 
-## 39. How to get this output?
+## 39. Transform the array number elements into binary.
 
 ```javascript
 const arr = [5, 1, 3, 2, 6]
-//transform the array elements in binary ['101', '1', '11', '10', '110']
-const output = arr.map(item => item.toString(2))
-console.log(output) // ['101', '1', '11', '10', '110']
+const outputBinary = arr.map(item => item.toString(2))
+console.log(outputBinary) // ['101', '1', '11', '10', '110']
 
 ```
+## 40. Transform the array binary elements into number.
 
-## 40. Difference in map. filter and reduce method?
+```javascript
+const arr = ['101', '1', '11', '10', '110']
+const outputNumber = arr.map(item => parseInt(item, 2))
+console.log(outputNumber) // [5, 1, 3, 2, 6]
+```
+## 41. Difference in map. filter and reduce method?
 
 1. **map** method is used when we want transformation of whole array.
 2. **filter** is used when we want to filter the arrar to obtain required value.
