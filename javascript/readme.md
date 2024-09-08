@@ -646,3 +646,74 @@ fetchData1((err, result1) => {
 - Each operation (fetchData1, fetchData2) simulates an asynchronous task using setTimeout.
 - The code becomes deeply nested as each operation depends on the result of the previous one, leading to callback hell.
 
+## 44. What is promise in JS?
+
+A Promise is an object in JavaScript (and TypeScript) that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It allows you to write asynchronous code in a more readable and structured way, avoiding "callback hell" where nested callbacks become difficult to manage.
+
+- Pending: The initial state, meaning the promise is neither fulfilled nor rejected.
+- Fulfilled: The operation was completed successfully, and the promise has a result.
+- Rejected: The operation failed, and the promise has an error.
+
+```javascript
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    const success = Math.random() > 0.5;
+    if (success) {
+        resolve("Data fetched successfully");
+    } else {
+        reject(new Error("Failed to fetch data"));
+    }
+  });
+}
+
+fetchData()
+  .then((data) => {
+    console.log(data); // Data fetched successfully
+  })
+  .catch((error) => {
+    console.error(error.message); // Failed to fetch data
+  });
+
+```
+## 45. What is promise chaining in JS?
+
+Promise chaining is a common pattern in JavaScript where multiple asynchronous operations are executed in sequence using promises. The key idea is that each asynchronous operation returns a promise, and the next operation starts when the previous promise resolves.
+
+**Instead of nesting multiple then() callbacks, promises are chained to ensure readability, maintainability, and clean code.**
+
+```javascript
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    console.log("Fetching data...");
+    resolve("Data fetched");
+  });
+};
+
+const processData = (data) => {
+  return new Promise((resolve, reject) => {
+    console.log("Processing data...");
+    resolve(`${data} -> Data processed`);
+  });
+};
+
+const saveData = (data) => {
+  return new Promise((resolve, reject) => {
+    console.log("Saving data...");
+    resolve(`${data} -> Data saved`);
+  });
+};
+
+// Chaining promises
+fetchData()
+    .then((data) => {
+        return processData(data)
+    })
+    .then((processedData) => {
+        return saveData(processedData)
+    })
+    .then((finalData) => console.log(finalData)) // Logs "Data fetched -> Data processed -> Data saved"
+    .catch((error) => console.error(error));
+
+```
+
+***Promise Chaining then() calls flattens the structure and improves readability compared to deeply nested callbacks. So using Promise and then catch method Callback hell can overcome***
