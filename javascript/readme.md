@@ -768,7 +768,7 @@ example();
     - Errors can be handled using try...catch blocks within the async function, providing a cleaner approach.
     - Ideal for managing complex asynchronous workflows, where readability and maintainability are important.
 
-## Explain and tell how the output is coming.
+## 48. Explain and tell how the output is coming.
 
 ```javascript
 
