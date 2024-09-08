@@ -556,3 +556,93 @@ console.log(outputNumber) // [5, 1, 3, 2, 6]
 2. **filter** is used when we want to filter the arrar to obtain required value.
 3. **reduce** is used when we want to reduce the array to single value eg (max, min, avg, sum, difference etc). reduce passes two arguments one function(which includes accumulator and initial value as argument itself) and another initial value of accumulator.
 
+## 42. Why do we need callback in js?
+
+- In JavaScript, many operations (such as fetching data from a server, reading files, or performing database queries) are asynchronous. Instead of blocking the execution of code while waiting for these operations to complete, a callback function allows the program to continue executing other code. Once the asynchronous operation completes, the callback is executed.
+- The callback ensures that certain code is only executed after an event has been triggered or an operation has completed.
+
+```javascript
+const fetchData1 = (callback) => {
+  setTimeout(() => {
+    console.log("Data from operation 1 retrieved");
+    callback(null, "Result 1");
+  }, 1000);
+};
+
+const fetchData2 = (callback) => {
+  setTimeout(() => {
+    console.log("Data from operation 2 retrieved");
+    callback(null, "Result 2");
+  }, 1000);
+};
+
+fetchData1((err, result1) => {
+  if (err) {
+    console.error("Error in operation 1");
+    return;
+  }
+  
+  fetchData2((err, result2) => {
+    if (err) {
+      console.error("Error in operation 2");
+      return;
+    }
+    console.log("Final Results:", result1, result2);
+  });
+});
+
+console.log('hello')
+```
+Here the function **fetchData1** is called and simulates an asynchronus operation, the callback passed there are maintaining both success and error cases.
+Here the output will be:
+
+```javascript
+// hello
+/** after 1 second*/
+// Data from operation 1 retrieved
+
+/** after another 1 second*/
+// Data from operation 2 retrieved
+
+//'Final Results:', 'Result 1', 'Result 2'
+```
+So from the output we can see callback function simulates an asynchronus operation, and other codes are not blocked
+
+## 43. What is callback hell in js?
+
+Callback hell refers to a situation where multiple nested callback functions are used in asynchronous programming, leading to code that is difficult to read and maintain. This issue arises when you have many asynchronous operations dependent on the results of previous ones.
+
+```javascript
+const fetchData1 = (callback) => {
+  setTimeout(() => {
+    console.log("Data from operation 1 retrieved");
+    callback(null, "Result 1");
+  }, 1000);
+};
+
+const fetchData2 = (callback) => {
+  setTimeout(() => {
+    console.log("Data from operation 2 retrieved");
+    callback(null, "Result 2");
+  }, 1000);
+};
+
+fetchData1((err, result1) => {
+  if (err) {
+    console.error("Error in operation 1");
+    return;
+  }
+  
+  fetchData2((err, result2) => {
+    if (err) {
+      console.error("Error in operation 2");
+      return;
+    }
+    console.log("Final Results:", result1, result2);
+  });
+});
+
+```
+- Each operation (fetchData1, fetchData2) simulates an asynchronous task using setTimeout.
+- The code becomes deeply nested as each operation depends on the result of the previous one, leading to callback hell.
+
