@@ -53,6 +53,7 @@ for (let i=1; i<=5; i++){
 ```
 ## let arr = [2, 2, 5, 9, 10, 1, , 4, 4, 5]; // remove duplicate then sort it without using array methods
 
+```javascript
 // Step 1: Remove undefined values (if any)
 let cleanArray: number[] = [];
 for (let i = 0; i < arr.length; i++) {
@@ -89,4 +90,4 @@ for (let i = 0; i < uniqueArray.length - 1; i++) {
 }
 
 console.log(uniqueArray); // Output: [1, 2, 4, 5, 9, 10]
-
+```
