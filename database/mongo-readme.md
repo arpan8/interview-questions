@@ -306,3 +306,69 @@ The ObjectId in MongoDB is a unique, 12-byte identifier used as the default prim
             await User.insertMany([{ name: 'Alice', age: 25 }, { name: 'Bob', age: 28 }]);
         }
     ```
+### 13. Explain the concept of sharding in MongoDB.
+
+Sharding is a method of distributing data across multiple servers (shards) to improve scalability and performance in MongoDB. It enables horizontal scaling by partitioning data based on a shard key, allowing the database to handle larger datasets and higher traffic loads.
+
+A sharded MongoDB architecture includes:
+
+1. Shards: Store subsets of data.
+2. Config Servers: Maintain metadata and configuration.
+3. Query Routers (mongos): Route queries to the appropriate shards.
+Benefits:
+- Horizontal Scalability: Handle larger datasets and increased traffic by adding more shards.
+- Performance: Distributes queries across shards for faster response times.
+- Fault Tolerance: Shards are replica sets, ensuring redundancy.
+- Choosing the right shard key is crucial for balanced data distribution and optimal performance.
+
+**A real-life example of sharding in MongoDB could be an e-commerce platform that handles millions of customer orders daily.**
+
+**Scenario:**
+**An online retail company stores customer orders in a MongoDB collection. As the platform grows, the number of orders increases significantly, leading to performance issues when handling queries and storing data on a single server.**
+
+Sharding Solution:
+The company shards the orders collection based on the **customer_id** as the shard key. Each shard stores orders for a range of customers. For example:
+
+- Shard 1 handles customers with IDs 1 to 100,000.
+- Shard 2 handles customers with IDs 100,001 to 200,000.
+- Shard 3 handles customers with IDs 200,001 to 300,000.
+
+Benefits:
+- Scalability: As the number of customers grows, new shards can be added to distribute the load.
+- Performance: Queries targeting specific customers are routed to the shard containing their orders, reducing the overall query load on the system.
+- Fault Tolerance: If one shard goes down, the rest of the system remains operational due to the use of replica sets.
+
+### 14. What is a replica set in MongoDB?
+
+A replica set in MongoDB is a group of MongoDB servers that maintain the same dataset. It provides data redundancy and high availability by replicating data across multiple servers (nodes). A replica set consists of at least three nodes: one primary node and one or more secondary nodes.
+
+It consists of:
+
+Primary Node: Handles all write operations.
+Secondary Nodes: Replicate data from the primary and can be used for read operations or as backups.
+Arbiter Node (optional): Helps in electing a new primary but does not store data.
+Benefits:
+High Availability: Automatic failover to a secondary if the primary fails.
+Data Redundancy: Replicates data across multiple nodes.
+Read Scalability: Distribute reads across secondary nodes.
+Backup: Acts as a real-time backup, reducing data loss risks.
+
+```bash
+mongod --replSet "myReplicaSet"
+```
+```js
+rs.initiate({
+  _id: "myReplicaSet",
+  members: [
+    { _id: 0, host: "localhost:27017" },
+    { _id: 1, host: "localhost:27018" },
+    { _id: 2, host: "localhost:27019" }
+  ]
+});
+```
+
+
+
+
+
+
