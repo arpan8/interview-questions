@@ -367,6 +367,48 @@ rs.initiate({
 });
 ```
 
+### 15. What are the different types of aggregation in MongoDB?
+
+The Aggregation Framework allows data processing through a pipeline of stages, each performing a specific operation like filtering, grouping, sorting, or reshaping documents.
+
+Common Stages:
+- $match: Filters documents (like WHERE in SQL).
+- $group: Groups documents by a field and performs aggregation (like GROUP BY).
+- $project: Selects or reshapes fields (like SELECT).
+- $sort: Sorts documents.
+- $limit: Limits the number of results.
+- $lookup: Joins documents from another collection.
+
+Full Example with Mongoose
+Here's an example using Mongoose to aggregate data in an e-commerce system, finding the total amount spent by each customer who has spent more than 500, sorted by total spent, and limited to the top 5.
+
+```javascript
+const mongoose = require('mongoose');
+
+// Order Schema
+const orderSchema = new mongoose.Schema({
+  order_id: Number,
+  customer_id: Number,
+  total_amount: Number
+});
+
+const Order = mongoose.model('Order', orderSchema);
+
+// Aggregation Pipeline
+Order.aggregate([
+  { $match: { total_amount: { $gt: 500 } } },          // Filter orders with amount > 500
+  { $group: { _id: "$customer_id", totalSpent: { $sum: "$total_amount" } } },  // Group by customer
+  { $sort: { totalSpent: -1 } },                       // Sort by total spent, descending
+  { $limit: 5 }                                        // Limit to top 5 customers
+])
+  .then(results => {
+    console.log(results);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
+```
 
 
 

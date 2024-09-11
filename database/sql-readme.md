@@ -136,6 +136,10 @@ from (
 where ranked_salary = 3
 limit 1;
 ```
+**Approach 4 using distinct, limit and offset**
+```sql
+Select distinct salary from Employees ORDER BY salary DESC limit 1 offset n - 1;
+```
 **Do not use ROW_NUMBER() for this query, if there are no duplicate data, then only it gives the correct value otherwise result will come wrong**
 
 ## 3. Write a SQL query to get the organization hierarchy?
