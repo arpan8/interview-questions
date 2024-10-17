@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 
 node version 18.20.1
-<video controls src="public/file-explorer.mp4" title="Title"></video>
+

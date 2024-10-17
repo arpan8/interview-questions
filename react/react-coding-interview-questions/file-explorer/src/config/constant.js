@@ -1,3 +1,6 @@
+// import { FaCss3, FaHtml5, FaJs } from "react-icons/fa";
+
+
 export const explorer = {
     id:"1",
     name: "root",
@@ -67,4 +70,10 @@ export const explorer = {
         items: []
       }
     ]
-  };
+  }
+
+  // export const fileIconMap = {
+  //   '.js': <FaJs />,   // JS Icon
+  //   '.html': <FaHtml5 />,  // HTML Icon
+  //   '.css': <FaCss3 />, // CSS Icon
+  // }
