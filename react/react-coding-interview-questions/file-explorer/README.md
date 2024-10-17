@@ -10,3 +10,10 @@ Currently, two official plugins are available:
 
 node version 18.20.1
 
+Screenshot
+![image](https://github.com/user-attachments/assets/a3e6b30a-fc46-49aa-9050-d2a4ab4a46e6)
+
+Video
+
+https://github.com/user-attachments/assets/d5da523f-e34a-43fd-9b96-ccb1c0c030fc
+
