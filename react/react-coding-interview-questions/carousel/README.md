@@ -1,4 +1,8 @@
 
+
+
+
+
 ## Node version
 v20.16.0
 mentioned in .nvmrc file
@@ -12,4 +16,4 @@ Create slideshow with previous and next button, image will come one after anothe
 
 use this api for image data ***https://picsum.photos/v2/list***
 
-<video controls src="public/slideshow.mp4" title="Title"></video>
+https://github.com/user-attachments/assets/b45c3e5e-6b3a-4c88-a301-eaef83fa6895
