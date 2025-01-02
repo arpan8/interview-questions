@@ -1,8 +1,15 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Node version
+v20.16.0
+mentioned in .nvmrc file
 
-Currently, two official plugins are available:
+## Run
+for first time do npm ci
+then npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Question
+Create slideshow with previous and next button, image will come one after another with the dalay of 2 seconds
+
+use this api for image data ***https://picsum.photos/v2/list***
+
+<video controls src="public/slideshow.mp4" title="Title"></video>
