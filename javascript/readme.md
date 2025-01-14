@@ -881,3 +881,84 @@ async function handlePromise(){
 ```
 
 Here the promises are in the function p1 and p2, when this functions will called i.e first p1 is called that will return the value after 10 second and p2 will be called then and will return the value after 5 second.
+
+## 49. What is shallow copy and deep copy in js ?
+
+**Shallow Copy**: A shallow copy copies the immediate values of an object or array, but if those values are references (e.g., objects or arrays), the references (memory) themselves are copied, not the referenced objects. This means the original and the copy share the same nested objects or arrays, leading to potential unintended side effects when modifying nested properties.
+
+Example:
+```javascript
+const original = { name: "Alice", details: { age: 25 } };
+
+// Create a shallow copy using spread operator
+const shallowCopy = { ...original };
+
+// Modify the nested object in the copy
+shallowCopy.details.age = 30; // Updates the shared reference
+shallowCopy.name = 'Arpan' // Updates the primitive value in the copy only
+
+console.log(original) // { name: 'Alice', details: { age: 30 } }
+console.log(shallowCopy) // { name: 'Arpan', details: { age: 30 } }
+
+console.log(original.details.age); // 30 (affected because it's a shared reference)
+
+```
+*What happened in the example?*
+- **shallowCopy.name = 'Arpan'**:
+  - Since name is a primitive value, changing it in the shallow copy only affects the copy, not the original. (**Primitive values like strings, numbers booleans, etc., are copied by value. When you update a primitive property (like name), the copy and the original become independent of each other for that property**.)
+- **shallowCopy.details.age = 30**:
+  - Since details is a nested object, the shallow copy and the original share the same reference to that object. Changing the age property affects both the copy and the original.(**Objects, arrays, and other non-primitive types are copied by reference in a shallow copy. This means that the details property in the shallow copy still points to the same object in memory as the details property in the original object.**)
+
+*Common Ways to Create a Shallow Copy*
+- Using the Spread Operator: 
+```javascript
+const shallowCopy = { ...original };
+
+```
+- Using Object.assign:
+```javascript
+const shallowCopy = Object.assign({}, original);
+
+```
+- Using Array.slice for arrays:
+```javascript
+const shallowCopy = originalArray.slice();
+
+```
+
+**Deep Copy**: A deep copy creates a new object or array with completely independent copies of all values, including nested objects or arrays. Changes made to the deep copy do not affect the original object or array.
+
+Example
+```javascript
+const original = { name: "Alice", details: { age: 25 } };
+
+// Create a deep copy using structuredClone
+const deepCopy = structuredClone(original);
+
+// Modify the nested object in the copy
+deepCopy.details.age = 36;
+deepCopy.name = 'Arpan'
+
+console.log(original, deepCopy); // { name: 'Alice', details: { age: 25 } }, { name: 'Arpan', details: { age: 36 } }
+console.log(original.details.age); // 25 (not affected because it's a separate object)
+
+```
+*Common Ways to Create a Deep Copy*
+- Using structuredClone (Modern JavaScript):
+```javascript
+const deepCopy = structuredClone(original);
+
+```
+- Using JSON.parse(JSON.stringify()): ***Note: This method doesn't handle functions, undefined, or circular references.***
+```javascript
+const deepCopy = JSON.parse(JSON.stringify(original));
+
+```
+- Using Third-Party Libraries: (Loadash)
+```javascript
+const _ = require('lodash');
+const deepCopy = _.cloneDeep(original);
+
+```
+
+![alt text](public/images/shallow-copy-deep-copy.png)
