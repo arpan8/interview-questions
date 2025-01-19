@@ -36,3 +36,34 @@ namespace times_table
     }
 }
 ```
+### 3. Fizz buzz problem
+```c#
+using System;
+
+namespace fizzBuzz
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = 20;
+            for (int i = 1; i <= n; i++) {
+                if (i % 3 == 0 && i % 5 == 0)
+                {
+                    Console.WriteLine($"{i} => FizzBuzz");
+                }
+                else if (i % 3 == 0)
+                {
+                    Console.WriteLine($"{i} => Fizz");
+                }
+                else if (i % 5 == 0) {
+                    Console.WriteLine($"{i} => Buzz");
+                } else
+                {
+                    Console.WriteLine($"{i} => {i}");
+                }
+            }
+        }
+    }
+}
+```
