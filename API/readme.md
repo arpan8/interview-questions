@@ -75,3 +75,59 @@ Authorization is the process of allowing an authenticated user to access the res
     2. Something you have: Smartphone, hardware token.
     3. Something you are: Biometric data (fingerprint, face recognition).
 - Cerificate based authentication: Uses digital certificates issued by trusted authorities to authenticate users or devices.
+
+## 11. Familiarity with API security models
+
+API security models encompass various authentication and authorization mechanisms to protect APIs from unauthorized access and ensure secure communication. Here’s a brief overview of the ones mentioned:
+
+- OAuth (Open Authorization)
+    - A widely used authorization framework that enables secure delegated access.
+    - OAuth 2.0 is the most common version, used for granting permissions via access tokens without exposing user credentials.
+    - Implementations include Authorization Code Flow (for web apps), Implicit Flow (for SPAs), and Client Credentials Flow (for machine-to-machine authentication).
+- JSON Web Token (JWT)
+    - A compact, URL-safe token format used for securely transmitting information between parties.
+    - Typically used in OAuth 2.0 for access and ID tokens.
+    - Signed using HMAC or RSA to ensure integrity and authenticity.
+- Digital Certificates (X.509 Certificates)
+    - Used for mutual TLS authentication and securing API communication via SSL/TLS.
+    - Often employed in enterprise environments and government systems for strong identity verification.
+
+Apart from OAuth, JWT, and Digital Certificates, there are several other API security models and mechanisms used to ensure secure communication, authentication, and authorization:
+
+- API Keys
+    - A simple, static authentication method where a unique key is assigned to each client.
+    - Used in less secure or internal applications where complex authentication is unnecessary.
+    - Vulnerable to interception if not properly secured (e.g., not using HTTPS).
+- HMAC (Hash-based Message Authentication Code)
+    - A cryptographic method that ensures the integrity and authenticity of API requests.
+    - The client and server share a secret key, and each request is signed using HMAC (e.g., HMAC-SHA256).
+    - Commonly used in REST APIs, webhook security, and AWS Signature Version 4.
+- Role-Based Access Control (RBAC)
+    - Access to API resources is restricted based on predefined user roles (e.g., admin, user, guest).
+    - Implemented using role claims in JWT or OAuth scopes.
+    - Helps enforce least privilege security principles.
+- OpenID Connect (OIDC)
+    - An identity layer built on top of OAuth 2.0, providing authentication as well as authorization.
+    - Returns an ID token (JWT) to verify user identity.
+    - Widely used in modern authentication workflows (e.g., Google Sign-In, Microsoft Entra ID).
+- Attribute-Based Access Control (ABAC).
+    - More flexible than RBAC, where access is granted based on attributes (e.g., user location, device type, time of access).
+    - Policies are evaluated dynamically instead of assigning static roles.
+- WebSockets Authentication
+    - Since WebSockets don’t support standard HTTP headers, authentication is often done using JWT, API keys, or token-based handshakes.
+    - Secure WebSockets (wss://) should be used with TLS encryption.
+- Federation & Delegation (e.g., SCIM, WS-Federation)
+    - SCIM (System for Cross-domain Identity Management): Used for user provisioning and identity management across organizations.
+    - WS-Federation: Used in Microsoft and enterprise environments for cross-domain authentication.
+
+## 12. Best Practices for API Security
+1. Use HTTPS (TLS 1.2 or higher) – Encrypt all API communications to prevent eavesdropping.
+2. Use OAuth 2.0 or OpenID Connect (OIDC) for authentication – Avoid basic authentication with passwords.
+3. Store API keys, secrets, and JWTs securely – Use environment variables, AWS Secrets Manager, or HashiCorp Vault.
+4. Implement rate limiting & throttling – Protect APIs from abuse and DDoS attacks.
+5. Enforce strong access control (RBAC/ABAC) – Ensure users only access authorized resources.
+6. Enable logging & monitoring – Use tools like AWS CloudWatch, ELK Stack, or Datadog to detect anomalies.
+7. Rotate API keys & tokens regularly – Reduce risk from compromised credentials.
+8. Validate & sanitize inputs – Prevent SQL injection, XSS, and other attacks.
+9. Use Web Application Firewalls (WAFs) & API Gateways – Filter malicious traffic and enforce security policies.
+10. Adopt Mutual TLS (mTLS) for critical services – Strengthen authentication between services.
