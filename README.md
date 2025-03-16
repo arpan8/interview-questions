@@ -1,2 +1,3 @@
-# Interview-questions
-Trying to write some interview questions and answers as per my skills, anything you have you can add
+# From Setbacks to Success: A Repository of Growth
+
+This repository represents my journey of learning and growth. It contains the questions I’ve faced in interviews, helping me turn challenges into opportunities. By making it public, I hope it not only tracks my progress but also helps others preparing for interviews. With consistency and determination, I believe every setback brings me one step closer to success.
