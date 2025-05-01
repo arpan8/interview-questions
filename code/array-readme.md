@@ -85,3 +85,35 @@ for (let i = 0; i < uniqueArray.length - 1; i++) {
 
 console.log(uniqueArray); // Output: [1, 2, 4, 5, 9, 10]
 ```
+
+## Input: arr[] = {3, 1, 3} Output: Missing = 2, Repeating = 3, Explanation: In the array, 2 is missing and 3 occurs twice  Input: arr[] = {4, 3, 6, 2, 1, 1}, Output: Missing = 5, Repeating = 1 explanation
+
+```javascript
+// const arr = [3, 1, 3]
+const arr = [4, 3, 6, 2, 1, 1]
+
+const obj = {}
+for(let i = 1; i<=arr.length; i++){
+    obj[i] = {
+        found: false,
+        repeat: 0
+    }
+}
+
+for(const item of arr){
+    if(obj[item]){
+        obj[item].repeat = obj[item]?.repeat + 1 || 0
+        obj[item].found = true
+    }
+}
+
+const missingNumbers = {}, repeatNumbers = {}
+for(const [key, value] of Object.entries(obj)){
+    if(value?.found && value?.repeat > 1){
+        repeatNumbers[key] = value?.repeat
+    }else if(!value?.found){
+        missingNumbers[key] = value?.found
+    }
+}
+console.log(missingNumbers, repeatNumbers)
+```
