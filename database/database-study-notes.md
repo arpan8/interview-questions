@@ -229,4 +229,112 @@ When using SQL, you write **statements** to instruct the database. These stateme
 ### What are queries in SQL?  
 Queries are instructions or commands written in SQL that ask the database to perform actions such as retrieving, inserting, updating, or deleting data.
 
+---
 
+### 📘 **Lecture Q&A Summary: Understanding SQL Queries**
+
+---
+
+### What is a query in SQL?  
+A query in SQL is a question or instruction you ask the database to retrieve or modify data. It's also known as a statement. In SQL, a query is used to interact with databases to get specific answers (data).
+
+---
+
+### What is an example of a basic query?  
+An example of a basic query is `SELECT * FROM users;`, which retrieves all information from the "users" table in the database.
+
+---
+
+### What is the purpose of the wildcard `*` in a query?  
+The `*` wildcard in a query represents "everything." It is used to select all columns of data from a table.
+
+---
+
+### How can you filter the data in a query?  
+You can filter data using the `WHERE` clause. For example, `SELECT name FROM users WHERE role = 'manager';` retrieves the names of users where the role is equal to "manager."
+
+---
+
+### What are the components of a query?  
+A query consists of different parts or clauses, including:
+- `SELECT`: Specifies which data to retrieve.
+- `FROM`: Specifies the table or data source.
+- `WHERE`: Filters the data based on a condition.
+
+---
+
+### What is an identifier in SQL?  
+An identifier in SQL is the part of the data you are querying. For example, in the query `SELECT name FROM users;`, "name" is the identifier because it's the data field being retrieved.
+
+---
+
+### What is a condition in a SQL query?  
+A condition in a query is specified by the `WHERE` clause. For example, in `WHERE role = 'manager';`, the condition is that the role must be equal to "manager" for the data to be returned.
+
+---
+
+### What is an expression in SQL?  
+An expression is a part of a condition. For instance, in `role = 'manager'`, the expression is `'manager'`, which is what the role is expected to equal.
+
+---
+
+### How does filtering work in SQL?  
+Filtering is done using the `WHERE` clause, which restricts the data returned based on specified conditions. For example, `SELECT name FROM users WHERE role = 'manager';` filters users whose role is "manager."
+
+---
+
+### What is a declarative language in the context of SQL?  
+SQL is a declarative language because you define *what* you want (e.g., the data), but not necessarily *how* to get it. The database engine determines the most efficient way to execute the query.
+
+---
+
+# 📘 Database Fundamentals(Revisited) – Q&A Notes
+
+### What is a database?
+A **database** is a *structured set of data* designed to scale efficiently, especially for organizations managing large volumes of information.
+
+---
+
+### What existed before databases?
+Before databases, we had **file processing systems**, which were the digital successors to **physical filing cabinets** and paper-based records.
+
+---
+
+### What were file processing systems?
+File processing systems were **custom-built software solutions** used to manage data using languages like Java or Python.  
+They stored data in individual files **without relationships** between datasets.
+
+---
+
+### What were the main limitations of file processing systems?
+
+- No relationships between data: files (e.g., customers, sales) existed independently.
+- Data redundancy: the same customer data had to be duplicated in multiple systems.
+- Lack of consistency: updates in one place weren’t reflected elsewhere.
+- High complexity: developers had to manage hardware, OS, file formats, etc.
+- Incompatibility: different systems (e.g., exams, library, students) couldn't communicate due to differing structures.
+
+---
+
+### What is a data model?
+A **data model** defines a consistent structure for storing data — typically using *tables with rows and columns*.  
+With a common model, different systems can share and understand data seamlessly.
+
+---
+
+### Can you give an example of file processing limitations?
+Yes. In a school system:
+- The **student**, **exam**, and **library** systems stored data independently.
+- If a student borrowed a book for an exam, both systems duplicated the student's data.
+- This led to **redundant and inconsistent** data across systems.
+
+---
+
+### What changed with the database-oriented approach?
+
+- Data is centralized in a single system.
+- Relationships are explicitly defined (e.g., via foreign keys).
+- Systems interact and share data without duplication.
+- Improves consistency, maintainability, and scalability.
+
+---
