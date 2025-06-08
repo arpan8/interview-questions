@@ -1,4 +1,4 @@
-# DSA practice and study can be done from GFG, Leetcode, Hackerrank
+# Data Structures and Algorithms (DSA) can be effectively studied and practiced using well-established platforms such as GeeksforGeeks (GFG), LeetCode, and HackerRank. These platforms offer a comprehensive set of problems, detailed editorial solutions, and structured learning paths that cater to various skill levels—from beginners to advanced practitioners.
 
 # 📘 Introduction to Data Structures and Algorithms (DSA)
 
